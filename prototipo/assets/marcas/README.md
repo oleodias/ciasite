@@ -25,12 +25,14 @@ faixa rolante ("logos que andam para o lado") dos Moldes 06 e 07.
    ```
 
    A faixa duplica os logos automaticamente para o efeito de rolagem infinita —
-   não precisa repetir nada.
+   não precisa repetir nada. Lembre de atualizar a lista nos **três** moldes
+   (05, 06 e 07).
 
-## Placeholders
+## Marcas atuais
 
-Os arquivos `marca-01.svg` … `marca-06.svg` são **provisórios** (apenas para
-visualizar o layout). Substitua-os pelos logos reais e atualize a lista `MARCAS`.
+`cliente-roche.png`, `cliente-abbott.png`, `cliente-gsk.png`,
+`cliente-mucambo.png`, `cliente-supermax.png` (200×100 originais, reamostrados
+para 400×200). Para trocar, basta substituir o arquivo mantendo o nome.
 
 ## Dica de contraste
 

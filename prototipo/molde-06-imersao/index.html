@@ -234,7 +234,7 @@ footer a:hover{color:var(--mint)}
   <script>
     (function(){
       // Edite esta lista para incluir/remover marcas (arquivos em assets/marcas/).
-      const MARCAS=['marca-01.svg','marca-02.svg','marca-03.svg','marca-04.svg','marca-05.svg','marca-06.svg'];
+      const MARCAS=['cliente-roche.png','cliente-abbott.png','cliente-gsk.png','cliente-mucambo.png','cliente-supermax.png'];
       const t=document.getElementById('mtrack');if(!t||!MARCAS.length)return;
       const set=()=>MARCAS.map(f=>'<div class="brand-chip"><img src="../assets/marcas/'+f+'" alt="" loading="lazy"></div>').join('');
       t.innerHTML=set()+set(); // duplica para rolagem infinita contínua
