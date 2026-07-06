@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ciamed — Molde 08 · Autoridade</title>
+<style>
+:root{
+  --teal:#00b3b2;--teal-deep:#0a6b6a;--teal-dark:#04403f;--mint:#8af0ef;
+  --ink:#0a2b2a;--gray:#6e6e6e;--line:#e3edeb;--mist:#f1f8f6;--paper:#fff;
+  --maxw:1180px;--font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:700}
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.accent{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;padding:14px 26px;border-radius:999px;transition:.25s;cursor:pointer;border:1.6px solid transparent}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 16px 34px -16px rgba(0,179,178,.7)}
+.btn-primary:hover{background:var(--teal-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
+.btn-out{border-color:var(--teal);color:var(--teal-deep)}
+.btn-out:hover{background:var(--teal);color:#fff}
+.eyebrow{font-weight:600;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--teal)}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.3s;padding:18px 0}
+header.solid{background:rgba(255,255,255,.96);box-shadow:0 6px 24px -14px rgba(0,0,0,.25);padding:12px 0}
+.bar{display:flex;align-items:center;justify-content:space-between}
+.logo{height:34px;transition:.3s}
+nav.main{display:flex;gap:30px}
+nav.main a{font-weight:500;font-size:.94rem;color:#fff;opacity:.9;transition:.2s}
+header.solid nav.main a{color:var(--ink)}
+nav.main a:hover{color:var(--mint)}
+header.solid nav.main a:hover{color:var(--teal)}
+header.solid .logo{filter:none}
+.logo{filter:brightness(0) invert(1)}
+header.solid .logo{filter:none}
+.access{font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;border:1.5px solid rgba(255,255,255,.6);color:#fff}
+header.solid .access{border-color:var(--teal);color:var(--teal-deep)}
+.access:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.menu-t{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+header.solid .menu-t{color:var(--ink)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero .overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,32,31,.86) 0%,rgba(4,32,31,.55) 45%,rgba(4,32,31,.2) 100%)}
+.hero .inner{position:relative;z-index:2;color:#fff;max-width:660px}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);margin:18px 0 6px}
+.hero .respire{font-size:clamp(2rem,4.4vw,3.2rem);color:var(--mint);font-weight:700;margin-bottom:20px}
+.hero p{font-size:1.12rem;opacity:.92;max-width:520px;margin-bottom:32px}
+.hero .cta{display:flex;gap:16px;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;opacity:.7;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint span{width:1px;height:34px;background:#fff;opacity:.5;animation:sd 1.8s infinite}
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* CLIENTES */
+.clients{background:var(--teal-deep);padding:30px 0}
+.clients .container{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
+.clients .lbl{color:#bff3f2;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.clients .row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:center;flex:1}
+.clients .chip{background:#fff;border-radius:12px;height:64px;width:132px;display:flex;align-items:center;justify-content:center;padding:14px 18px}
+.clients .chip img{max-width:100%;max-height:100%;object-fit:contain}
+
+/* SECTION base */
+section.block{padding:100px 0}
+.sec-head{max-width:720px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin:14px 0 14px}
+.sec-head p{color:var(--gray);font-size:1.08rem}
+
+/* NÚMEROS */
+.nums{background:var(--mist)}
+.ngrid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.ncard{background:var(--paper);border:1px solid #e6f0ed;border-radius:18px;padding:32px 26px}
+.ncard .big{font-size:clamp(2.4rem,4vw,3.2rem);font-weight:700;color:var(--teal);letter-spacing:-.03em;line-height:1}
+.ncard .lbl{margin-top:10px;font-weight:600;color:var(--ink)}
+.ncard .desc{margin-top:6px;color:var(--gray);font-size:.9rem}
+
+/* POR QUE */
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pcard{padding:32px 26px;border-radius:18px;border:1px solid #eaf2f0;background:#fff;transition:.3s}
+.pcard:hover{border-color:var(--teal);box-shadow:0 24px 44px -28px rgba(0,179,178,.5);transform:translateY(-4px)}
+.pcard .ic{width:52px;height:52px;border-radius:13px;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.pcard .ic svg{width:26px;height:26px;stroke:var(--teal);fill:none;stroke-width:1.8}
+.pcard h3{font-size:1.15rem;margin-bottom:8px}
+.pcard p{color:var(--gray);font-size:.94rem}
+
+/* CARDS FLUTUANTES (GSK) */
+.discover{background:linear-gradient(160deg,#eef8f6,#fff)}
+.disc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.disc-stage{position:relative;height:420px}
+.disc-card{position:absolute;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(4,64,63,.5);transition:opacity .8s,transform .8s}
+.disc-main{inset:0 60px 60px 0;background:var(--teal-deep)}
+.disc-main .txt{position:absolute;inset:auto 0 0 0;padding:26px;background:linear-gradient(transparent,rgba(4,32,31,.9));color:#fff}
+.disc-main .txt b{display:block;font-size:1.3rem;margin-bottom:4px}
+.disc-main .txt span{opacity:.85;font-size:.92rem}
+.disc-mini{width:210px;height:150px;right:0;bottom:0;background:var(--teal)}
+.disc-mini2{width:150px;height:110px;right:170px;top:0;background:var(--mint)}
+.disc-slide{background-size:cover;background-position:center}
+.disc-text h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:14px 0}
+.disc-text p{color:var(--gray);font-size:1.06rem;margin-bottom:16px}
+.disc-dots{display:flex;gap:10px;margin-top:22px}
+.disc-dots i{width:9px;height:9px;border-radius:50%;background:#cfe6e0;cursor:pointer;transition:.3s}
+.disc-dots i.on{background:var(--teal);width:26px;border-radius:6px}
+
+/* CTA + FOOTER */
+.ctaband{background:var(--teal-dark);color:#fff;text-align:center;padding:80px 0}
+.ctaband h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px}
+.ctaband p{opacity:.85;max-width:560px;margin:0 auto 30px}
+footer{background:#062421;color:#cfe6e0;padding:56px 0 26px;font-size:.92rem}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:34px}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:14px}
+footer a{opacity:.8}footer a:hover{opacity:1;color:var(--mint)}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fbottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;opacity:.7;font-size:.82rem}
+.flogo{height:30px;filter:brightness(0) invert(1);margin-bottom:14px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+@media(max-width:900px){
+  nav.main,.access{display:none}.menu-t{display:block}
+  .ngrid,.pgrid{grid-template-columns:1fr 1fr}
+  .disc-grid{grid-template-columns:1fr}.disc-stage{height:340px}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){.ngrid,.pgrid{grid-template-columns:1fr}.hero .overlay{background:linear-gradient(180deg,rgba(4,32,31,.5),rgba(4,32,31,.85))}}
+.note{position:fixed;left:14px;bottom:14px;z-index:200;background:#04403f;color:#cff;font-size:.72rem;padding:8px 12px;border-radius:8px;max-width:300px;opacity:.9}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="container bar">
+    <img src="../assets/logo.png" class="logo" alt="Ciamed">
+    <nav class="main">
+      <a href="#">A Empresa</a><a href="#numeros">Atuação</a><a href="#especialidades">Especialidades</a><a href="#cobertura">Unidades</a><a href="#">Contato</a>
+    </nav>
+    <a href="#" class="access">Área de Acesso ▾</a>
+    <button class="menu-t">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <video autoplay muted loop playsinline poster=""><source src="../assets/video/ciamed-hero.mp4" type="video/mp4"></video>
+  <div class="overlay"></div>
+  <div class="container inner">
+    <span class="eyebrow" style="color:var(--mint)">Distribuidora Farmacêutica · desde 2003</span>
+    <h1>Você chegou<br>na Ciamed</h1>
+    <div class="respire">Respire.</div>
+    <p>Distribuição de medicamentos com a solidez de quem cuida do que mais importa: a vida. Do interior à capital, do varejo ao hospital.</p>
+    <div class="cta">
+      <a href="#" class="btn btn-primary">Fale com o Comercial →</a>
+      <a href="#numeros" class="btn btn-ghost">Conheça a Ciamed</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Role para descobrir<span></span></div>
+</section>
+
+<!-- CLIENTES -->
+<section class="clients">
+  <div class="container">
+    <span class="lbl">Marcas que confiam na Ciamed</span>
+    <div class="row">
+      <div class="chip"><img src="../assets/marcas/cliente-roche.png" alt="Roche"></div>
+      <div class="chip"><img src="../assets/marcas/cliente-gsk.png" alt="GSK"></div>
+      <div class="chip"><img src="../assets/marcas/cliente-abbott.png" alt="Abbott"></div>
+      <div class="chip"><img src="../assets/marcas/cliente-supermax.png" alt="Supermax"></div>
+      <div class="chip"><img src="../assets/marcas/cliente-mucambo.png" alt="Mucambo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="block nums" id="numeros">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Solidez que se mede</span>
+      <h2>Um <span class="accent">porte</span> que sustenta o cuidado</h2>
+      <p>Mais de duas décadas distribuindo medicamentos com escala nacional e agilidade que o mercado da saúde exige.</p>
+    </div>
+    <div class="ngrid">
+      <div class="ncard reveal"><div class="big" data-count="20" data-suffix="+">0</div><div class="lbl">anos de mercado</div><div class="desc">experiência consolidada desde 2003</div></div>
+      <div class="ncard reveal"><div class="big" data-count="5">0</div><div class="lbl">unidades no Brasil</div><div class="desc">RS · SC · SP · ES</div></div>
+      <div class="ncard reveal"><div class="big" data-count="24" data-suffix="h">0</div><div class="lbl">entregas em até</div><div class="desc">cobertura rodoviária e aérea</div></div>
+      <div class="ncard reveal"><div class="big" data-count="100" data-suffix="%">0</div><div class="lbl">foco na vida</div><div class="desc">compliance e boas práticas ANVISA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE CIAMED -->
+<section class="block" id="porque">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Por que Ciamed</span>
+      <h2>Distribuir com quem o mercado <span class="accent">confia</span></h2>
+      <p>Quatro pilares que fazem a Ciamed uma parceira segura para o setor público e privado.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Boas Práticas ANVISA</h3><p>Certificação e rigor regulatório em toda a cadeia de distribuição.</p></div>
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Cobertura nacional</h3><p>Cinco unidades estrategicamente posicionadas, entregas em até 24h.</p></div>
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20v-6a8 8 0 0116 0v6"/><path d="M2 20h20M9 20v-4h6v4"/></svg></div><h3>Atendimento especializado</h3><p>Oncologia, reumatologia e oftalmologia com linha completa.</p></div>
+      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-4 7-8 8-4-1-8-4-8-8V7z"/><path d="M12 8v5M12 16v.5"/></svg></div><h3>Compliance & ética</h3><p>Idoneidade, regularidade e transparência em licitações e contratos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DESCUBRA (cards flutuantes) -->
+<section class="block discover" id="especialidades">
+  <div class="container disc-grid">
+    <div class="disc-stage reveal">
+      <div class="disc-card disc-main disc-slide" id="dMain"></div>
+      <div class="disc-card disc-mini disc-slide" id="dMini"></div>
+      <div class="disc-card disc-mini2 disc-slide" id="dMini2"></div>
+    </div>
+    <div class="disc-text reveal">
+      <span class="eyebrow">Descubra a Ciamed</span>
+      <h2 id="dTitle">Especialidades que exigem <span class="accent">precisão</span></h2>
+      <p id="dDesc">Atendemos as principais áreas do setor da saúde com linha completa e atendimento especializado — do diagnóstico ao tratamento.</p>
+      <a href="#" class="btn btn-out">Ver especialidades →</a>
+      <div class="disc-dots" id="dDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctaband">
+  <div class="container">
+    <h2>Pronto para distribuir com quem o mercado confia?</h2>
+    <p>Fale com nosso time comercial e descubra como a Ciamed pode atender sua operação com segurança e agilidade.</p>
+    <a href="#" class="btn btn-primary">Fale com o Comercial →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div><img src="../assets/logo.png" class="flogo" alt="Ciamed"><p style="max-width:280px;opacity:.8">Distribuidora de medicamentos certificada, presente em todo o país, comprometida com a vida.</p></div>
+      <div><h4>A Ciamed</h4><ul><li><a href="#">A Empresa</a></li><li><a href="#cobertura">Unidades</a></li><li><a href="#">Carreiras</a></li></ul></div>
+      <div><h4>Acesso rápido</h4><ul><li><a href="#">Licitações</a></li><li><a href="#">Cotações</a></li><li><a href="#">2ª Via Boleto</a></li></ul></div>
+      <div><h4>Atendimento</h4><ul><li><a href="tel:5137519300">(51) 3751-9300</a></li><li><a href="mailto:atendimento@ciamed.com.br">atendimento@ciamed.com.br</a></li></ul></div>
+    </div>
+    <div class="fbottom"><span>CNPJ 05.782.733/0001-49 — Ciamed Distribuidora de Medicamentos Ltda.</span><span>Política de Privacidade · Cookies</span></div>
+  </div>
+</footer>
+
+<div class="note">🅰️ Molde 08 — <b>Autoridade</b> · claro, corporativo (ref. EVCOMX + GSK). Scroll normal.</div>
+
+<script>
+// header solid
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>60));
+// reveal on scroll (normal, sem sequestro)
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// count up
+const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,s=el.dataset.suffix||'';let n=0;const step=Math.max(1,t/40);const tick=()=>{n=Math.min(t,n+step);el.textContent=Math.round(n)+s;if(n<t)requestAnimationFrame(tick)};tick();cio.unobserve(el)}}),{threshold:.6});
+document.querySelectorAll('.big[data-count]').forEach(el=>cio.observe(el));
+// cards flutuantes que trocam (GSK-inspired)
+const SLIDES=[
+  {title:'Oncologia de <span class="accent">ponta</span>',desc:'Linha completa e cadeia fria monitorada — qualidade e segurança do estoque à entrega.',c:'#0a6b6a',c2:'#00b3b2',c3:'#8af0ef'},
+  {title:'Reumatologia com <span class="accent">cuidado</span>',desc:'Medicamentos especiais com rastreabilidade e atendimento técnico dedicado.',c:'#04403f',c2:'#0a6b6a',c3:'#2bd0cf'},
+  {title:'Oftalmologia <span class="accent">completa</span>',desc:'Portfólio amplo com agilidade logística para clínicas e hospitais.',c:'#0a6b6a',c2:'#2bd0cf',c3:'#8af0ef'},
+];
+const dMain=document.getElementById('dMain'),dMini=document.getElementById('dMini'),dMini2=document.getElementById('dMini2'),dTitle=document.getElementById('dTitle'),dDesc=document.getElementById('dDesc'),dDots=document.getElementById('dDots');
+SLIDES.forEach((_,i)=>{const b=document.createElement('i');if(!i)b.className='on';b.onclick=()=>go(i);dDots.appendChild(b)});
+dMain.innerHTML='<div class="txt"><b id="mb"></b><span id="ms"></span></div>';
+let idx=0;
+function go(i){idx=i;const s=SLIDES[i];
+  dMain.style.background=s.c;dMini.style.background=s.c2;dMini2.style.background=s.c3;
+  document.getElementById('mb').innerHTML=s.title.replace(/<[^>]+>/g,'');
+  document.getElementById('ms').textContent='Especialidade';
+  dTitle.innerHTML=s.title;dDesc.textContent=s.desc;
+  [...dDots.children].forEach((d,j)=>d.classList.toggle('on',j===i));
+  [dMain,dMini,dMini2].forEach(c=>{c.style.opacity=.35;setTimeout(()=>c.style.opacity=1,60)});
+}
+go(0);setInterval(()=>go((idx+1)%SLIDES.length),3800);
+</script>
+</body>
+</html>
