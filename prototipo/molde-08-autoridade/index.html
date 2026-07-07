@@ -55,7 +55,7 @@ header.solid .menu-t{color:var(--ink)}
 .hero .overlay{position:absolute;inset:0;z-index:1;background:
   linear-gradient(30deg,rgba(3,26,25,.94) 0%,rgba(3,26,25,.6) 30%,rgba(3,26,25,.12) 58%,transparent 78%),
   linear-gradient(0deg,rgba(3,26,25,.65) 0%,transparent 42%)}
-.hero .inner{position:relative;z-index:2;color:#fff;max-width:660px;margin:0}
+.hero .inner{position:relative;z-index:2;color:#fff;max-width:660px;margin:0;transform:translate(70px,-150px)}
 .hero .eyebrow{color:var(--mint)}
 .hero h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:800;margin:16px 0 18px;letter-spacing:-.03em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
 .hero .titulo{width:min(760px,90vw);height:auto;display:block;margin:0;filter:drop-shadow(0 6px 26px rgba(0,0,0,.45))}
@@ -72,6 +72,7 @@ header.solid .menu-t{color:var(--ink)}
 .hero-anim>*:nth-child(4){animation-delay:.62s}
 @keyframes heroUp{to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.hero-anim>*{opacity:1;transform:none;animation:none}}
+@media(max-width:700px){.hero .inner{transform:none}}
 
 /* PARCEIROS (marcas) — premium/corporativo */
 .partners{padding:96px 0;background:linear-gradient(180deg,#fff 0%,var(--mist) 100%)}
