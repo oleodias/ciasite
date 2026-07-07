@@ -235,7 +235,7 @@ footer a:hover{color:var(--mint)}
   <script>
     (function(){
       // Edite esta lista para incluir/remover marcas (arquivos em assets/marcas/).
-      const MARCAS=['roche.svg','abbott.svg','glaxosmithkline_gsk.svg','bayer.svg','novartis.svg','sandoz.svg','alcon.svg','organon.svg','daiichi_sankyo.svg','fresenius_kabi.svg','csl_behring.png','grunenthal.png','ranbaxy.svg','sun_farmaceutica.svg','apsen.svg','libbs.svg','blau_farmaceutica.png','cellera.png','bergamo.png','bl_industria_otica.svg','abl_antibioticos.png','airela.png','accord.png','attivos_magisttrais.png','laboratorio_globo.svg','inovamed.png','divcom.png','genesio_a_mendes.png','quifa.png','unichem.png','united_medical.png','sc_distribuicao.png','cliente-mucambo.png','cliente-supermax.png'];
+      const MARCAS=['roche.svg','abbott.svg','glaxosmithkline_gsk.svg','bayer.svg','novartis.svg','sandoz.svg','alcon.svg','organon.svg','daiichi_sankyo.svg','fresenius_kabi.svg','csl_behring.png','grunenthal.png','ranbaxy.svg','sun_farmaceutica.svg','apsen.svg','libbs.svg','blau_farmaceutica.png','cellera.png','bergamo.png','bl_industria_otica.svg','abl_antibioticos.png','airela.png','accord.png','attivos_magisttrais.png','laboratorio_globo.svg','inovamed.png','divcom.png','genesio_a_mendes.png','quifa.png','unichem.png','united-medical.png','sc_distribuicao.png'];
       const t=document.getElementById('mtrack');if(!t||!MARCAS.length)return;
       const set=()=>MARCAS.map(f=>'<div class="brand-chip"><img src="../assets/marcas/'+f+'" alt="" loading="lazy"></div>').join('');
       t.innerHTML=set()+set(); // duplica para rolagem infinita contínua
