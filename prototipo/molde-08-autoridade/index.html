@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ciamed — Molde 08 · Autoridade</title>
 <style>
+@font-face{font-family:'Sora';src:url('../assets/fonts/sora-latin.woff2') format('woff2');font-weight:100 900;font-display:swap}
 :root{
   --teal:#00b3b2;--teal-deep:#0a6b6a;--teal-dark:#04403f;--mint:#8af0ef;
   --ink:#0a2b2a;--gray:#6e6e6e;--line:#e3edeb;--mist:#f1f8f6;--paper:#fff;
   --maxw:1180px;--font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  --display:'Sora','Helvetica Neue',Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3{line-height:1.08;letter-spacing:-.02em;font-weight:700}
+h1,h2,h3{font-family:var(--display);line-height:1.08;letter-spacing:-.025em;font-weight:700}
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 .accent{color:var(--teal)}
@@ -47,25 +49,38 @@ header.solid .access{border-color:var(--teal);color:var(--teal-deep)}
 header.solid .menu-t{color:var(--ink)}
 
 /* HERO */
-.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;height:100vh;min-height:660px;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:76px}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.hero .overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,32,31,.86) 0%,rgba(4,32,31,.55) 45%,rgba(4,32,31,.2) 100%)}
-.hero .inner{position:relative;z-index:2;color:#fff;max-width:660px}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);margin:18px 0 6px}
-.hero .respire{font-size:clamp(2rem,4.4vw,3.2rem);color:var(--mint);font-weight:700;margin-bottom:20px}
-.hero p{font-size:1.12rem;opacity:.92;max-width:520px;margin-bottom:32px}
+/* overlay concentrado no canto inferior esquerdo — deixa o vídeo aparente no topo/direita */
+.hero .overlay{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(30deg,rgba(3,26,25,.94) 0%,rgba(3,26,25,.6) 30%,rgba(3,26,25,.12) 58%,transparent 78%),
+  linear-gradient(0deg,rgba(3,26,25,.65) 0%,transparent 42%)}
+.hero .inner{position:relative;z-index:2;color:#fff;max-width:660px;margin:0}
+.hero .eyebrow{color:var(--mint)}
+.hero h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:800;margin:16px 0 18px;letter-spacing:-.03em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.28rem);font-weight:500;opacity:.95;max-width:540px;margin-bottom:30px}
 .hero .cta{display:flex;gap:16px;flex-wrap:wrap}
-.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;opacity:.7;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint{position:absolute;bottom:30px;right:34px;z-index:2;color:#fff;opacity:.65;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
 .scroll-hint span{width:1px;height:34px;background:#fff;opacity:.5;animation:sd 1.8s infinite}
 @keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
-/* CLIENTES */
-.clients{background:var(--teal-deep);padding:30px 0}
-.clients .container{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
-.clients .lbl{color:#bff3f2;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
-.clients .row{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;align-items:center;flex:1}
-.clients .chip{background:#fff;border-radius:12px;height:64px;width:132px;display:flex;align-items:center;justify-content:center;padding:14px 18px}
-.clients .chip img{max-width:100%;max-height:100%;object-fit:contain}
+/* PARCEIROS (marcas) — premium/corporativo */
+.partners{padding:96px 0;background:linear-gradient(180deg,#fff 0%,var(--mist) 100%)}
+.partners .head{text-align:center;max-width:700px;margin:0 auto 50px}
+.partners .head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:14px 0 12px}
+.partners .head p{color:var(--gray);font-size:1.06rem}
+.plogos{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 60px -40px rgba(4,64,63,.4)}
+.plogos .cell{flex:1 1 0;min-width:170px;display:flex;align-items:center;justify-content:center;padding:44px 26px;border-right:1px solid var(--line);transition:background .3s}
+.plogos .cell:last-child{border-right:0}
+.plogos .cell img{max-height:46px;max-width:130px;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .35s,opacity .35s,transform .35s}
+.plogos .cell:hover{background:var(--mist)}
+.plogos .cell:hover img{filter:none;opacity:1;transform:scale(1.06)}
+.certs{margin-top:34px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 26px}
+.certs .lab{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);font-weight:600}
+.cert{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:var(--teal-deep);font-size:.92rem}
+.cert svg{width:19px;height:19px;stroke:var(--teal);fill:none;stroke-width:1.8}
+.certs .sep{width:1px;height:18px;background:var(--line)}
+@media(max-width:760px){.plogos .cell{flex:1 1 40%;border-bottom:1px solid var(--line)}}
 
 /* SECTION base */
 section.block{padding:100px 0}
@@ -141,7 +156,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   <div class="container bar">
     <img src="../assets/logo.png" class="logo" alt="Ciamed">
     <nav class="main">
-      <a href="#">A Empresa</a><a href="#numeros">Atuação</a><a href="#especialidades">Especialidades</a><a href="#cobertura">Unidades</a><a href="#">Contato</a>
+      <a href="#">A Empresa</a><a href="#porque">Atuação</a><a href="#especialidades">Especialidades</a><a href="#parceiros">Parceiros</a><a href="#">Contato</a>
     </nav>
     <a href="#" class="access">Área de Acesso ▾</a>
     <button class="menu-t">☰</button>
@@ -153,45 +168,39 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   <video autoplay muted loop playsinline poster=""><source src="../assets/video/ciamed-hero.mp4" type="video/mp4"></video>
   <div class="overlay"></div>
   <div class="container inner">
-    <span class="eyebrow" style="color:var(--mint)">Distribuidora Farmacêutica · desde 2003</span>
+    <span class="eyebrow">Distribuidora Farmacêutica Nacional</span>
     <h1>Você chegou<br>na Ciamed</h1>
-    <div class="respire">Respire.</div>
-    <p>Distribuição de medicamentos com a solidez de quem cuida do que mais importa: a vida. Do interior à capital, do varejo ao hospital.</p>
+    <p>Distribuição de medicamentos em escala nacional, com a solidez de quem cuida do que mais importa: a vida.</p>
     <div class="cta">
       <a href="#" class="btn btn-primary">Fale com o Comercial →</a>
-      <a href="#numeros" class="btn btn-ghost">Conheça a Ciamed</a>
+      <a href="#porque" class="btn btn-ghost">Conheça a Ciamed</a>
     </div>
   </div>
   <div class="scroll-hint">Role para descobrir<span></span></div>
 </section>
 
-<!-- CLIENTES -->
-<section class="clients">
+<!-- PARCEIROS -->
+<section class="partners" id="parceiros">
   <div class="container">
-    <span class="lbl">Marcas que confiam na Ciamed</span>
-    <div class="row">
-      <div class="chip"><img src="../assets/marcas/cliente-roche.png" alt="Roche"></div>
-      <div class="chip"><img src="../assets/marcas/cliente-gsk.png" alt="GSK"></div>
-      <div class="chip"><img src="../assets/marcas/cliente-abbott.png" alt="Abbott"></div>
-      <div class="chip"><img src="../assets/marcas/cliente-supermax.png" alt="Supermax"></div>
-      <div class="chip"><img src="../assets/marcas/cliente-mucambo.png" alt="Mucambo"></div>
+    <div class="head reveal">
+      <span class="eyebrow" style="justify-content:center">Parcerias que sustentam o mercado</span>
+      <h2>Distribuímos as marcas em que o <span class="accent">Brasil confia</span></h2>
+      <p>Trabalhamos lado a lado com as principais indústrias farmacêuticas — laços de confiança construídos com regularidade, ética e escala.</p>
     </div>
-  </div>
-</section>
-
-<!-- NÚMEROS -->
-<section class="block nums" id="numeros">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Solidez que se mede</span>
-      <h2>Um <span class="accent">porte</span> que sustenta o cuidado</h2>
-      <p>Mais de duas décadas distribuindo medicamentos com escala nacional e agilidade que o mercado da saúde exige.</p>
+    <div class="plogos reveal">
+      <div class="cell"><img src="../assets/marcas/cliente-roche.png" alt="Roche"></div>
+      <div class="cell"><img src="../assets/marcas/cliente-gsk.png" alt="GSK"></div>
+      <div class="cell"><img src="../assets/marcas/cliente-abbott.png" alt="Abbott"></div>
+      <div class="cell"><img src="../assets/marcas/cliente-supermax.png" alt="Supermax"></div>
+      <div class="cell"><img src="../assets/marcas/cliente-mucambo.png" alt="Mucambo"></div>
     </div>
-    <div class="ngrid">
-      <div class="ncard reveal"><div class="big" data-count="20" data-suffix="+">0</div><div class="lbl">anos de mercado</div><div class="desc">experiência consolidada desde 2003</div></div>
-      <div class="ncard reveal"><div class="big" data-count="5">0</div><div class="lbl">unidades no Brasil</div><div class="desc">RS · SC · SP · ES</div></div>
-      <div class="ncard reveal"><div class="big" data-count="24" data-suffix="h">0</div><div class="lbl">entregas em até</div><div class="desc">cobertura rodoviária e aérea</div></div>
-      <div class="ncard reveal"><div class="big" data-count="100" data-suffix="%">0</div><div class="lbl">foco na vida</div><div class="desc">compliance e boas práticas ANVISA</div></div>
+    <div class="certs reveal">
+      <span class="lab">Certificações &amp; conformidade</span>
+      <span class="cert"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Boas Práticas ANVISA</span>
+      <span class="sep"></span>
+      <span class="cert"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>GAFO</span>
+      <span class="sep"></span>
+      <span class="cert"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-4 7-8 8-4-1-8-4-8-8V7z"/><path d="M12 8v5M12 16v.4"/></svg>Compliance &amp; Ética</span>
     </div>
   </div>
 </section>
@@ -252,7 +261,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   </div>
 </footer>
 
-<div class="note">🅰️ Molde 08 — <b>Autoridade</b> · claro, corporativo (ref. EVCOMX + GSK). Scroll normal.</div>
+<div class="note">🅰️ Molde 08 — <b>Autoridade v2</b> · corporativo, hero canto inf. esquerdo, sem números, marcas premium.</div>
 
 <script>
 // header solid
