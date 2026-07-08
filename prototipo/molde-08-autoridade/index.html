@@ -258,7 +258,7 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   <div class="container bar">
     <img src="../assets/logo.png" class="logo" alt="Ciamed">
     <nav class="main">
-      <a href="#">A Empresa</a><a href="#porque">Atuação</a><a href="#especialidades">Especialidades</a><a href="#parceiros">Parceiros</a><a href="#destaques">Notícias</a><a href="#">Contato</a>
+      <a href="#">A Empresa</a><a href="#atuacao">Atuação</a><a href="#especialidades">Especialidades</a><a href="#parceiros">Parceiros</a><a href="#destaques">Notícias</a><a href="#">Contato</a>
     </nav>
     <a href="#" class="access">Área de Acesso ▾</a>
     <button class="menu-t">☰</button>
@@ -295,20 +295,35 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   </div>
 </section>
 
-<!-- POR QUE CIAMED -->
-<section class="block" id="porque">
+<!-- DESCUBRA (cards flutuantes — componente GSK) -->
+<section class="block discover" id="especialidades">
   <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Por que Ciamed</span>
-      <h2>Distribuir com quem o mercado <span class="accent">confia</span></h2>
-      <p>Quatro pilares que fazem a Ciamed uma parceira segura para o setor público e privado.</p>
+    <div class="disc-top reveal">
+      <span class="eyebrow">Descubra a Ciamed</span>
+      <h2>Descubra como <span class="accent">avançamos</span></h2>
     </div>
-    <div class="pgrid">
-      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Boas Práticas ANVISA</h3><p>Certificação e rigor regulatório em toda a cadeia de distribuição.</p></div>
-      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Cobertura nacional</h3><p>Cinco unidades estrategicamente posicionadas, entregas em até 24h.</p></div>
-      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20v-6a8 8 0 0116 0v6"/><path d="M2 20h20M9 20v-4h6v4"/></svg></div><h3>Atendimento especializado</h3><p>Oncologia, reumatologia e oftalmologia com linha completa.</p></div>
-      <div class="pcard reveal"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 4-4 7-8 8-4-1-8-4-8-8V7z"/><path d="M12 8v5M12 16v.5"/></svg></div><h3>Compliance & ética</h3><p>Idoneidade, regularidade e transparência em licitações e contratos.</p></div>
+
+    <div class="ctrl reveal">
+      <span class="count" id="count">01 / 05</span>
+      <div class="bar"><i id="prog"></i></div>
+      <button id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6z"/></svg></button>
+      <button id="play" aria-label="Pausar"><svg viewBox="0 0 24 24" id="playIco"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+      <button id="next" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z"/></svg></button>
     </div>
+
+    <div class="stage reveal">
+      <div class="slide-title" id="stitle"></div>
+      <div class="main-card">
+        <div class="ph a" id="mainA"></div>
+        <div class="ph b" id="mainB"></div>
+      </div>
+      <div class="arrow-btn" id="arrow" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      <div class="peek p1"><div class="ph" id="peek1"></div></div>
+      <div class="peek p2"><div class="ph" id="peek2"></div></div>
+      <div class="peek p3"><div class="ph" id="peek3"></div></div>
+    </div>
+
+    <div class="disc-cta reveal"><a href="#" class="btn btn-primary">Conheça a Ciamed →</a></div>
   </div>
 </section>
 
@@ -379,37 +394,6 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   </div>
 </section>
 
-<!-- DESCUBRA (cards flutuantes — componente GSK) -->
-<section class="block discover" id="especialidades">
-  <div class="container">
-    <div class="disc-top reveal">
-      <span class="eyebrow">Descubra a Ciamed</span>
-      <h2>Descubra como <span class="accent">avançamos</span></h2>
-    </div>
-
-    <div class="ctrl reveal">
-      <span class="count" id="count">01 / 05</span>
-      <div class="bar"><i id="prog"></i></div>
-      <button id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6z"/></svg></button>
-      <button id="play" aria-label="Pausar"><svg viewBox="0 0 24 24" id="playIco"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
-      <button id="next" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z"/></svg></button>
-    </div>
-
-    <div class="stage reveal">
-      <div class="slide-title" id="stitle"></div>
-      <div class="main-card">
-        <div class="ph a" id="mainA"></div>
-        <div class="ph b" id="mainB"></div>
-      </div>
-      <div class="arrow-btn" id="arrow" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-      <div class="peek p1"><div class="ph" id="peek1"></div></div>
-      <div class="peek p2"><div class="ph" id="peek2"></div></div>
-      <div class="peek p3"><div class="ph" id="peek3"></div></div>
-    </div>
-
-    <div class="disc-cta reveal"><a href="#" class="btn btn-primary">Conheça a Ciamed →</a></div>
-  </div>
-</section>
 
 <!-- DESTAQUES (notícias — carrossel) -->
 <section class="block destaques" id="destaques">
