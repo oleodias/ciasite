@@ -79,12 +79,15 @@ header.solid .menu-t{color:var(--ink)}
 .partners .head{text-align:center;max-width:700px;margin:0 auto 50px}
 .partners .head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:14px 0 12px}
 .partners .head p{color:var(--gray);font-size:1.06rem}
-.marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee{position:relative;overflow:hidden;padding:28px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .marquee-track{display:flex;width:max-content;animation:brandscroll 80s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
-.brand-chip{flex:0 0 auto;width:210px;height:112px;margin-right:24px;background:#fff;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:26px 32px;box-shadow:0 18px 36px -28px rgba(4,64,63,.5)}
+.brand-chip{position:relative;flex:0 0 auto;width:210px;height:112px;margin-right:24px;background:#fff;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:26px 32px;box-shadow:0 18px 36px -28px rgba(4,64,63,.5);transition:transform .32s cubic-bezier(.2,.7,.2,1),box-shadow .32s,border-color .32s}
+.brand-chip[href]{cursor:pointer}
+.brand-chip:hover{transform:translateY(-12px) scale(1.07);box-shadow:0 34px 56px -22px rgba(4,64,63,.55);border-color:var(--teal);z-index:3}
 .brand-chip img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .35s,opacity .35s}
 .brand-chip:hover img{filter:none;opacity:1}
+@media(prefers-reduced-motion:reduce){.brand-chip:hover{transform:none}}
 @keyframes brandscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 .certs{margin-top:34px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 26px}
@@ -452,9 +455,48 @@ document.querySelectorAll('.reveal').forEach(el=>{const p=el.parentElement;const
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target;el.style.transitionDelay=(Math.min(+el.dataset.st||0,6)*90)+'ms';el.classList.add('in');io.unobserve(el)}}),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 // faixa de marcas (marquee) — logos passando, cor no hover
-const MARCAS=['roche.svg','abbott.svg','glaxosmithkline_gsk.svg','bayer.svg','novartis.svg','sandoz.svg','alcon.svg','organon.svg','daiichi_sankyo.svg','fresenius_kabi.svg','csl_behring.png','grunenthal.png','ranbaxy.svg','sun_farmaceutica.svg','apsen.svg','libbs.svg','blau_farmaceutica.png','cellera.png','bergamo.png','bl_industria_otica.svg','abl_antibioticos.png','airela.png','accord.png','attivos_magisttrais.png','laboratorio_globo.svg','inovamed.png','divcom.png','genesio_a_mendes.png','quifa.png','unichem.png','united-medical.png','sc_distribuicao.png'];
+// Faixa de marcas — cada chip vira link p/ a farmaceutica. Preencha 'u' com a URL oficial.
+const MARCAS=[
+  {f:'roche.svg',u:'https://www.roche.com.br'},
+  {f:'abbott.svg',u:'https://www.abbott.com'},
+  {f:'glaxosmithkline_gsk.svg',u:'https://br.gsk.com'},
+  {f:'bayer.svg',u:'https://www.bayer.com.br'},
+  {f:'novartis.svg',u:'https://www.novartis.com.br'},
+  {f:'sandoz.svg',u:'https://www.sandoz.com'},
+  {f:'alcon.svg',u:'https://br.alcon.com'},
+  {f:'organon.svg',u:'https://www.organon.com.br'},
+  {f:'daiichi_sankyo.svg',u:'https://www.daiichisankyo.com.br'},
+  {f:'fresenius_kabi.svg',u:'https://www.fresenius-kabi.com/pt-br'},
+  {f:'csl_behring.png',u:'https://www.cslbehring.com.br'},
+  {f:'grunenthal.png',u:'https://www.grunenthal.com.br'},
+  {f:'ranbaxy.svg',u:'https://www.sunpharma.com'},
+  {f:'sun_farmaceutica.svg',u:'https://www.sunpharma.com'},
+  {f:'apsen.svg',u:'https://www.apsen.com.br'},
+  {f:'libbs.svg',u:'https://www.libbs.com.br'},
+  {f:'blau_farmaceutica.png',u:'https://www.blau.com'},
+  {f:'cellera.png',u:'https://cellerafarma.com.br'},
+  {f:'bergamo.png',u:''},
+  {f:'bl_industria_otica.svg',u:''},
+  {f:'abl_antibioticos.png',u:''},
+  {f:'airela.png',u:''},
+  {f:'accord.png',u:''},
+  {f:'attivos_magisttrais.png',u:''},
+  {f:'laboratorio_globo.svg',u:'https://www.laboratorioglobo.com.br'},
+  {f:'inovamed.png',u:''},
+  {f:'divcom.png',u:''},
+  {f:'genesio_a_mendes.png',u:''},
+  {f:'quifa.png',u:''},
+  {f:'unichem.png',u:'https://www.unichemlabs.com'},
+  {f:'united-medical.png',u:'https://www.unitedmedical.com.br'},
+  {f:'sc_distribuicao.png',u:''},
+];
 const mt=document.getElementById('mtrack');
-if(mt){const mset=()=>MARCAS.map(f=>'<div class="brand-chip"><img src="../assets/marcas/'+f+'" alt="" loading="lazy"></div>').join('');mt.innerHTML=mset()+mset();}
+if(mt){
+  const nameOf=f=>f.replace(/\.(svg|png|jpg)$/,'').replace(/[_-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  const chip=m=>{const nm=nameOf(m.f);return '<a class="brand-chip"'+(m.u?' href="'+m.u+'" target="_blank" rel="noopener"':'')+' aria-label="'+nm+'"><img src="../assets/marcas/'+m.f+'" alt="'+nm+'" loading="lazy"></a>';};
+  const mset=()=>MARCAS.map(chip).join('');
+  mt.innerHTML=mset()+mset();
+}
 // count up
 const cio=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,s=el.dataset.suffix||'';let n=0;const step=Math.max(1,t/40);const tick=()=>{n=Math.min(t,n+step);el.textContent=Math.round(n)+s;if(n<t)requestAnimationFrame(tick)};tick();cio.unobserve(el)}}),{threshold:.6});
 document.querySelectorAll('.big[data-count]').forEach(el=>cio.observe(el));
