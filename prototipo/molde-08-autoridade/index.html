@@ -164,6 +164,20 @@ section.block{padding:100px 0}
 .disc-dots i{width:9px;height:9px;border-radius:50%;background:#cfe6e0;cursor:pointer;transition:.3s}
 .disc-dots i.on{background:var(--teal);width:26px;border-radius:6px}
 
+/* FAIXA FIXA (manifesto) — imagem estática, conteúdo "passa por cima" (ref. Teuto) */
+.parallax{position:relative;text-align:center;padding:clamp(160px,28vh,260px) 0;
+  background:url('../assets/hero-respire.jpg') center/cover no-repeat fixed;overflow:hidden}
+.parallax::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(2,48,47,.62),rgba(2,48,47,.78)),radial-gradient(120% 120% at 50% 50%,transparent 40%,rgba(2,33,31,.55))}
+.parallax .pinner{position:relative;z-index:1;max-width:840px;margin:0 auto}
+.parallax .mark{color:var(--mint);font-weight:600;font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;display:inline-flex;align-items:center;gap:12px;margin-bottom:24px}
+.parallax .mark::before,.parallax .mark::after{content:"";width:26px;height:2px;background:var(--mint);opacity:.7}
+.parallax h2{color:#fff;font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.14;letter-spacing:-.03em;text-shadow:0 2px 34px rgba(0,0,0,.35)}
+.parallax h2 b{color:var(--mint);font-weight:700}
+.parallax p{color:rgba(255,255,255,.88);font-size:clamp(1.05rem,1.7vw,1.28rem);margin:24px auto 0;max-width:600px}
+/* iOS/Android: background-attachment:fixed é bugado — cai p/ scroll normal */
+@media(max-width:820px){.parallax{background-attachment:scroll;padding:clamp(110px,20vh,160px) 0}}
+
 /* CTA + FOOTER */
 .ctaband{background:var(--teal-dark);color:#fff;text-align:center;padding:80px 0}
 .ctaband h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px}
@@ -278,6 +292,17 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
         <p>Seja nosso parceiro de distribuição e alcance capilaridade nacional com quem o mercado confia.</p>
         <span class="lk">Seja parceiro →</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAIXA FIXA (manifesto) — imagem estática, o conteúdo passa por cima -->
+<section class="parallax" id="manifesto">
+  <div class="container">
+    <div class="pinner reveal">
+      <span class="mark">Nosso propósito</span>
+      <h2>O que importa é a <b>vida</b>.<br>Cuidar das pessoas pode <b>mudar o mundo</b>.</h2>
+      <p>Cada entrega da Ciamed começa por aqui: levar o medicamento certo a quem precisa, com segurança e respeito por cada história.</p>
     </div>
   </div>
 </section>
