@@ -7,8 +7,8 @@ Coloque o vídeo institucional AQUI, com este nome exato:
 (Opcional, melhora compatibilidade/peso: ciamed-hero.webm)
 
 ## Como o código usa
-O hero usa <video autoplay muted loop playsinline poster="admin-ajax.jpg">.
-- ANTES de subir o vídeo: aparece a foto "Respire" (admin-ajax.jpg) como poster — o hero já fica completo.
+O hero usa <video autoplay muted loop playsinline poster="hero-respire.jpg">.
+- ANTES de subir o vídeo: aparece a foto "Respire" (hero-respire.jpg) como poster — o hero já fica completo.
 - DEPOIS de subir ciamed-hero.mp4 aqui: o vídeo passa a tocar automaticamente, sem mexer no código.
 
 ## Specs recomendadas (para web)
