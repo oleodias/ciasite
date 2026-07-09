@@ -245,13 +245,33 @@ section.block{padding:100px 0}
 .ctaband{background:var(--teal-dark);color:#fff;text-align:center;padding:80px 0}
 .ctaband h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:14px}
 .ctaband p{opacity:.85;max-width:560px;margin:0 auto 30px}
-footer{background:#062421;color:#cfe6e0;padding:56px 0 26px;font-size:.92rem}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:34px}
-footer h4{color:#fff;font-size:.95rem;margin-bottom:14px}
-footer a{opacity:.8}footer a:hover{opacity:1;color:var(--mint)}
-footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.fbottom{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;opacity:.7;font-size:.82rem}
-.flogo{height:30px;filter:brightness(0) invert(1);margin-bottom:14px}
+/* FOOTER (redesign — faixa Bayer + cartão Teuto + skyline Encantado) */
+footer{position:relative;background:#02302f;color:#bfe0dc;font-size:.92rem;overflow:hidden}
+.foot-top{border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-top .container{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:46px;padding-bottom:46px}
+.foot-top h3{font-family:var(--display);color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em}
+.foot-top h3 span{color:var(--mint)}
+.foot-cta{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:#02302f;background:var(--mint);padding:14px 26px;border-radius:999px;white-space:nowrap;transition:.25s}
+.foot-cta:hover{background:#fff;transform:translateY(-2px)}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:40px;padding:52px 0 44px}
+.fcol h4,.fcard h4{color:#fff;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;opacity:.9}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fcol a{opacity:.78;transition:.2s}
+.fcol a:hover{opacity:1;color:var(--mint)}
+.flogo{height:30px;filter:brightness(0) invert(1);margin-bottom:16px}
+.fabout{opacity:.72;max-width:250px;font-size:.9rem;line-height:1.6}
+.fsocial{display:flex;gap:12px;margin-top:20px}
+.fsocial a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;opacity:.85;transition:.25s}
+.fsocial a:hover{background:var(--mint);border-color:var(--mint);color:#02302f;opacity:1;transform:translateY(-2px)}
+.fsocial svg{width:17px;height:17px;fill:currentColor}
+.fcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px 26px}
+.fcard .row{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-size:.92rem}
+.fcard .row:last-child{margin-bottom:0}
+.fcard .row svg{width:17px;height:17px;stroke:var(--mint);fill:none;stroke-width:1.7;flex:0 0 auto;margin-top:3px}
+.fcard a{opacity:.85}.fcard a:hover{color:var(--mint);opacity:1}
+.fskyline{width:100%;display:block;opacity:.6;pointer-events:none;margin-bottom:-4px}
+.fbottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0 30px;display:flex;justify-content:space-between;gap:10px 26px;flex-wrap:wrap;opacity:.62;font-size:.8rem}
+.fbottom .certs-f{display:flex;gap:16px;flex-wrap:wrap}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -263,8 +283,9 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
   .ngrid,.pgrid{grid-template-columns:1fr 1fr}
   .cov-grid{grid-template-columns:1fr;gap:36px}
   .fgrid{grid-template-columns:1fr 1fr}
+  .foot-top .container{flex-direction:column;align-items:flex-start;gap:18px}
 }
-@media(max-width:560px){.ngrid,.pgrid{grid-template-columns:1fr}.hero .overlay{background:linear-gradient(180deg,rgba(4,32,31,.5),rgba(4,32,31,.85))}}
+@media(max-width:560px){.ngrid,.pgrid,.fgrid{grid-template-columns:1fr}.hero .overlay{background:linear-gradient(180deg,rgba(4,32,31,.5),rgba(4,32,31,.85))}}
 .note{position:fixed;left:14px;bottom:14px;z-index:200;background:#04403f;color:#cff;font-size:.72rem;padding:8px 12px;border-radius:8px;max-width:300px;opacity:.9}
 </style>
 </head>
@@ -450,14 +471,63 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 </section>
 
 <footer>
+  <!-- faixa superior: convite ao contato -->
+  <div class="foot-top">
+    <div class="container">
+      <h3>Vamos cuidar da <span>vida</span>, juntos?</h3>
+      <a href="#" class="foot-cta">Fale com a Ciamed →</a>
+    </div>
+  </div>
+
   <div class="container">
     <div class="fgrid">
-      <div><img src="../assets/logo.png" class="flogo" alt="Ciamed"><p style="max-width:280px;opacity:.8">Distribuidora de medicamentos certificada, presente em todo o país, comprometida com a vida.</p></div>
-      <div><h4>A Ciamed</h4><ul><li><a href="#">A Empresa</a></li><li><a href="#cobertura">Unidades</a></li><li><a href="#">Carreiras</a></li></ul></div>
-      <div><h4>Acesso rápido</h4><ul><li><a href="#">Licitações</a></li><li><a href="#">Cotações</a></li><li><a href="#">2ª Via Boleto</a></li></ul></div>
-      <div><h4>Atendimento</h4><ul><li><a href="tel:5137519300">(51) 3751-9300</a></li><li><a href="mailto:atendimento@ciamed.com.br">atendimento@ciamed.com.br</a></li></ul></div>
+      <div class="fcol">
+        <img src="../assets/logo.png" class="flogo" alt="Ciamed">
+        <p class="fabout">Distribuidora de medicamentos para os setores público e privado, presente em todo o país — comprometida com a vida.</p>
+        <div class="fsocial">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2m0 5.4a4.4 4.4 0 100 8.8 4.4 4.4 0 000-8.8m0 1.6a2.8 2.8 0 110 5.6 2.8 2.8 0 010-5.6m4.6-2.9a1 1 0 100 2 1 1 0 000-2"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.9 8.4H3.6V20h3.3V8.4M5.25 3.5a1.9 1.9 0 100 3.8 1.9 1.9 0 000-3.8M20.4 20v-6.4c0-3.1-1.7-4.6-3.9-4.6-1.8 0-2.6 1-3 1.7V8.4H10.2c.05.9 0 11.6 0 11.6h3.3v-6.5c0-.3 0-.6.1-.8.25-.6.8-1.3 1.8-1.3 1.3 0 1.8 1 1.8 2.4V20h3.2"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8.5V6.9c0-.7.5-.9.8-.9H16V3.2h-2.2C11 3.2 10.4 5.3 10.4 6.6v1.9H8.6V11h1.8v9h3.2v-9h2.2l.3-2.5H14"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.4c-.2-.9-.9-1.6-1.8-1.8C18.2 5.2 12 5.2 12 5.2s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 9 2 12 2 12s0 3 .4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8C22 15 22 12 22 12s0-3-.4-4.6M10 15V9l5.2 3L10 15"/></svg></a>
+        </div>
+      </div>
+      <div class="fcol">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#">A Empresa</a></li>
+          <li><a href="#atuacao">Atuação</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#destaques">Notícias</a></li>
+          <li><a href="#cobertura">Unidades</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h4>Acesso rápido</h4>
+        <ul>
+          <li><a href="#">Área do Cliente</a></li>
+          <li><a href="#">Licitações</a></li>
+          <li><a href="#">Cotações</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h4>Contato</h4>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M5 4h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg><a href="tel:5137519300">(51) 3751-9300</a></div>
+        <div class="row"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:atendimento@ciamed.com.br">atendimento@ciamed.com.br</a></div>
+        <div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Rua Severino Augusto Pretto, 560 — Encantado/RS · CEP 95960-000</span></div>
+        <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><a href="https://www.ciamed.com.br" target="_blank" rel="noopener">www.ciamed.com.br</a></div>
+      </div>
     </div>
-    <div class="fbottom"><span>CNPJ 05.782.733/0001-49 — Ciamed Distribuidora de Medicamentos Ltda.</span><span>Política de Privacidade · Cookies</span></div>
+  </div>
+
+  <!-- skyline de Encantado/RS (Cristo Protetor, Igreja Matriz, araucárias, ponte do Taquari) -->
+  <img class="fskyline" src="../assets/skyline-encantado.png" alt="Encantado/RS — Cristo Protetor, Igreja Matriz e a serra gaúcha em traço">
+
+  <div class="container">
+    <div class="fbottom">
+      <span>© 2026 Ciamed Distribuidora de Medicamentos Ltda. · CNPJ 05.782.733/0001-49</span>
+      <span class="certs-f">Boas Práticas ANVISA · GAFO · Compliance &amp; Ética · Política de Privacidade</span>
+    </div>
   </div>
 </footer>
 
