@@ -42,14 +42,7 @@
       body {
         font-family: var(--font);
         color: var(--ink);
-        background:
-          radial-gradient(
-            45% 32% at 100% 8%,
-            rgba(0, 179, 178, 0.14),
-            transparent 60%
-          ),
-          #f7fbfa;
-        background-attachment: fixed;
+        background: var(--paper);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
@@ -358,7 +351,7 @@
       /* PARCEIROS (marcas) — premium/corporativo */
       .partners {
         padding: 96px 0;
-        background: #e3f1ec;
+        background: linear-gradient(180deg, #fff 0%, var(--mist) 100%);
       }
       .partners .head {
         text-align: center;
@@ -600,7 +593,7 @@
 
       /* ATUAÇÃO */
       .atuacao {
-        background: #e3f1ec;
+        background: var(--mist);
       }
       .agrid {
         display: grid;
@@ -671,7 +664,7 @@
 
       /* COBERTURA + MAPA (redesign — ref. Claude Design) */
       .cobertura {
-        background: transparent;
+        background: linear-gradient(180deg, #f4f9f8, #eef4f3);
       }
       .cov-card {
         background: linear-gradient(180deg, #fff, #fbfdfc);
@@ -802,7 +795,7 @@
 
       /* CARDS FLUTUANTES (componente GSK — autoplay + progresso + peek) */
       .discover {
-        background: transparent;
+        background: linear-gradient(160deg, #eef8f6, #fff);
       }
       .disc-top {
         text-align: center;
@@ -1082,7 +1075,7 @@
 
       /* DESTAQUES (notícias — carrossel, ref. Teuto) */
       .destaques {
-        background: #e3f1ec;
+        background: #fff;
       }
       .dest-head {
         text-align: center;
