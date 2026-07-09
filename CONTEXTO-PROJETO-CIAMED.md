@@ -6,6 +6,7 @@
 ---
 
 ## 0. Como retomar (faça primeiro)
+
 1. O repositório é **`oleodias/ciasite`**, trabalhamos direto na branch **`main`**.
 2. `git pull origin main` para pegar o estado mais recente.
 3. Site publicado (GitHub Pages): **https://oleodias.github.io/ciasite/prototipo/**
@@ -14,6 +15,7 @@
 4. **Sempre committar e dar push na `main`** após cada mudança (com retry/backoff em erro de rede).
 
 ### ⚙️ Método de trabalho combinado (IMPORTANTE)
+
 - **Renderizar o MÍNIMO possível.** O usuário confere pelo link do GitHub Pages.
   Só gere screenshot (puppeteer) quando for realmente indispensável — imagens custam
   muitos tokens.
@@ -25,11 +27,12 @@
 ---
 
 ## 1. A empresa (dados reais)
+
 - **Razão social:** Ciamed Distribuidora de Medicamentos Ltda. · **CNPJ** 05.782.733/0001-49
 - **O que faz:** distribuição de medicamentos p/ setores **público** (licitações, ordem
   judicial) e **privado** (hospitais, clínicas, operadoras, varejo farmacêutico).
-- **Manifesto oficial:** *"O que importa é a VIDA. Cuidar das pessoas pode mudar o mundo."*
-- **Copy do hero:** *"Você chegou na Ciamed"* (sem o "Respire" — foi removido a pedido).
+- **Manifesto oficial:** _"O que importa é a VIDA. Cuidar das pessoas pode mudar o mundo."_
+- **Copy do hero:** _"Você chegou na Ciamed"_ (sem o "Respire" — foi removido a pedido).
 - **Unidades (5)** — usadas no mapa:
   - **Encantado/RS — Matriz** · Rua Severino Augusto Pretto, 560 · CEP 95960-000
   - **Porto Alegre/RS** · Rua Ramiro Barcelos, 1201
@@ -41,6 +44,7 @@
 - **Contato:** (51) 3751-9300 · atendimento@ciamed.com.br · www.ciamed.com.br
 
 ### ⚠️ Decisão-chave da diretoria / auditoria
+
 - A auditoria apontou que **"a Ciamed não se vende pelo site"** → o site precisa comunicar
   **porte, confiança e valor**.
 - **NÃO usar faixa de números** (20 anos/5 unidades/24h): a empresa é grande e esses números
@@ -50,6 +54,7 @@
 ---
 
 ## 2. Identidade visual oficial (seguir à risca)
+
 - **Cor primária (teal):** `#00B3B2` (Pantone 326 C). Trabalhar com a escala de tons.
 - **Cinza institucional:** `#6E6E6E`.
 - **Apoio p/ fundos escuros imersivos:** petróleo `#02302F` / `#04211F` e menta `#8AF0EF`.
@@ -63,22 +68,25 @@
 ---
 
 ## 3. Estado atual dos moldes (protótipos da Home)
+
 Todos em `prototipo/molde-*/index.html`. Índice navegável: `prototipo/index.html`.
 
-| Molde | Nome | Estado |
-|---|---|---|
-| 01–04 | Impacto/Suave/Imersivo/Jornada | antigos (scroll-jacking) — descartados na prática |
-| 05 | Jornada Clara | antigo |
-| 06 | Imersão (vídeo fixo) | tem o hero de vídeo; scroll-jacking |
-| 07 | Cortina (vídeo sobe) | idem |
-| **08** | **Autoridade** | ⭐ **MOLDE ATUAL / principal** — é aqui que estamos evoluindo |
-| 09 | Imersão sóbria | tema escuro premium, scroll normal |
-| 10 | Prova viva | editorial (manifesto + teaser de notícias) |
-| 11 | Corte do Diretor | proposta autoral (posicionamento c/ pattern + depoimento) |
-| — | Componente **Cards flutuantes** | `prototipo/componentes/cards-flutuantes/` (carrossel estilo GSK) |
+| Molde  | Nome                            | Estado                                                           |
+| ------ | ------------------------------- | ---------------------------------------------------------------- |
+| 01–04  | Impacto/Suave/Imersivo/Jornada  | antigos (scroll-jacking) — descartados na prática                |
+| 05     | Jornada Clara                   | antigo                                                           |
+| 06     | Imersão (vídeo fixo)            | tem o hero de vídeo; scroll-jacking                              |
+| 07     | Cortina (vídeo sobe)            | idem                                                             |
+| **08** | **Autoridade**                  | ⭐ **MOLDE ATUAL / principal** — é aqui que estamos evoluindo    |
+| 09     | Imersão sóbria                  | tema escuro premium, scroll normal                               |
+| 10     | Prova viva                      | editorial (manifesto + teaser de notícias)                       |
+| 11     | Corte do Diretor                | proposta autoral (posicionamento c/ pattern + depoimento)        |
+| —      | Componente **Cards flutuantes** | `prototipo/componentes/cards-flutuantes/` (carrossel estilo GSK) |
 
 ### ⭐ Molde 08 "Autoridade" — o foco atual
+
 Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
+
 1. **Hero:** vídeo em tela cheia + **título SVG** "Você chegou na Ciamed" (com "Ciamed"
    cursivo teal), posicionado no canto inferior esquerdo e deslocado na **diagonal**
    (`transform: translate(70px,-70px)` no `.hero .inner`). **Sem subtítulo e sem botão** —
@@ -97,6 +105,7 @@ Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
 ---
 
 ## 4. Vídeo do hero (CDN)
+
 - **Fonte principal (CDN ImageKit):**
   `https://ik.imagekit.io/ciamedia/video%20ciamed%20nuvem.mp4`
 - **Fallback local:** `prototipo/assets/video/ciamed-hero.mp4` (5.6MB, otimizado:
@@ -110,6 +119,7 @@ Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
 ---
 
 ## 5. Faixa de marcas (marquee) — como mexer
+
 - Logos em `prototipo/assets/marcas/` (~32 marcas ativas).
 - A lista fica na variável **`const MARCAS=[...]`** dentro do `<script>` dos moldes
   05, 06, 07, 08, 11. **Adicionar/remover marca = editar essa lista** (nos moldes que a usam)
@@ -125,7 +135,9 @@ Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
 ---
 
 ## 6. Referências (pasta `referencias/`)
+
 Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agradou**.
+
 - **evcomx/** — ⭐ referência-mestre: limpo, corporativo, 1 cor de acento, logos de clientes
   após o hero, casos com depoimento. (Base do molde 08.)
 - **gsk/** — cards flutuantes que trocam ("Descubra como estamos avançando") → virou o
@@ -137,6 +149,7 @@ Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agrado
 ---
 
 ## 7. Materiais e assets úteis
+
 - `wireframes/home.md` — wireframe textual completo da Home (estrutura + copy real).
 - `super-prompt-ia.md` — briefing completo da marca (útil como referência de dados).
 - `materiais-fonte/` — logo, ícone, dump do site atual (`sitedaciamednovo.txt`).
@@ -147,8 +160,10 @@ Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agrado
 ---
 
 ## 8. Ambiente técnico (para renders/vídeo — reinstalar se preciso)
+
 > ⚠️ Ferramentas ficam em `/tmp/node_modules` (efêmero) — **uma sessão/container novo NÃO as
 > terá**. Reinstalar quando for gerar imagem/vídeo:
+
 - **Puppeteer** (screenshots): `npm i puppeteer` em /tmp; usar
   `PUPPETEER_CACHE_DIR=/tmp/pup` e args `--no-sandbox`. Renderizar `file://` do molde.
 - **ffmpeg/ffprobe** (vídeo): `npm i ffmpeg-static ffprobe-static` em /tmp.
@@ -159,6 +174,7 @@ Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agrado
 ---
 
 ## 9. Próximos passos / pendências
+
 - [ ] **Novartis:** aguardar o `nota.txt` do usuário e recriar a peça (provável seção "Nossa
       história"/linha do tempo).
 - [ ] Continuar **peça por peça** conforme o usuário traz referências.
@@ -171,6 +187,7 @@ Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agrado
 ---
 
 ## 10. Mensagem sugerida para iniciar a nova sessão
+
 > "Estou continuando o projeto do site da Ciamed. Leia o arquivo
 > `CONTEXTO-PROJETO-CIAMED.md` na raiz do repo `oleodias/ciasite` (branch main) para
 > pegar todo o contexto. Estamos evoluindo o **Molde 08 (Autoridade)** peça por peça a

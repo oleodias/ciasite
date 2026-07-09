@@ -1,4 +1,5 @@
 # ETAPA 1 + 2 — Descoberta e Auditoria
+
 ### Projeto: Novo Site Institucional Ciamed Distribuidora Farmacêutica
 
 > Documento de consultoria. Consolida a fase de imersão/descoberta e o diagnóstico
@@ -11,10 +12,10 @@
 A Ciamed possui **conteúdo e arquitetura de informação adequados** no projeto
 desenvolvido pelo designer externo. O motivo da reprovação pela diretoria
 **não é falta de conteúdo nem erro de estrutura** — é a **percepção visual e
-experiencial**: o site não está organizado para *demonstrar* a escala, a solidez e
+experiencial**: o site não está organizado para _demonstrar_ a escala, a solidez e
 a autoridade que a empresa já possui de fato.
 
-Em outras palavras: **a Ciamed é grande, mas o site não a faz *parecer* grande.**
+Em outras palavras: **a Ciamed é grande, mas o site não a faz _parecer_ grande.**
 
 A maior alavanca de transformação está em dois pontos:
 
@@ -26,20 +27,21 @@ A maior alavanca de transformação está em dois pontos:
 
 ## 2. Quem é a Ciamed (perfil consolidado)
 
-| Dimensão | Informação |
-|---|---|
-| Fundação | Julho de 2003 — Encantado/RS (mais de 20 anos de mercado) |
-| Atividade | Distribuição de medicamentos e materiais hospitalares |
-| Unidades | 5 — Encantado/RS (matriz), Porto Alegre/RS, Palhoça/SC, Leme/SP, Serra/ES |
-| Cobertura | Nacional (rodoviária + aérea) |
-| Especialidades | Oncologia, Reumatologia, Oftalmologia (linha completa) |
-| Públicos | Setor público (licitações), setor privado (hospitais, clínicas, operadoras, varejo farmacêutico) |
-| Clientes/parceiros de peso | Roche, GSK, Abbott, Supermax, Mucambo |
-| Certificações/Programas | Boas Práticas (ANVISA), Certificação GAFO, Compliance, Programa CEAMEDY, Responsabilidade Socioambiental |
-| Promessa logística | "Entregas em até 24h" |
-| Contato central | 51 3748-3763 · atendimento@ciamed.com.br |
+| Dimensão                   | Informação                                                                                               |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Fundação                   | Julho de 2003 — Encantado/RS (mais de 20 anos de mercado)                                                |
+| Atividade                  | Distribuição de medicamentos e materiais hospitalares                                                    |
+| Unidades                   | 5 — Encantado/RS (matriz), Porto Alegre/RS, Palhoça/SC, Leme/SP, Serra/ES                                |
+| Cobertura                  | Nacional (rodoviária + aérea)                                                                            |
+| Especialidades             | Oncologia, Reumatologia, Oftalmologia (linha completa)                                                   |
+| Públicos                   | Setor público (licitações), setor privado (hospitais, clínicas, operadoras, varejo farmacêutico)         |
+| Clientes/parceiros de peso | Roche, GSK, Abbott, Supermax, Mucambo                                                                    |
+| Certificações/Programas    | Boas Práticas (ANVISA), Certificação GAFO, Compliance, Programa CEAMEDY, Responsabilidade Socioambiental |
+| Promessa logística         | "Entregas em até 24h"                                                                                    |
+| Contato central            | 51 3748-3763 · atendimento@ciamed.com.br                                                                 |
 
 ### Identidade visual disponível
+
 - **Logotipo** (`materiais-fonte/logo-2024.png`): wordmark "CIAMED" + "Distribuidora
   de Medicamentos Ltda".
 - **Ícone/símbolo** (`materiais-fonte/iconeciamed.png`): o "A" formando um **pico/
@@ -67,31 +69,34 @@ A maior alavanca de transformação está em dois pontos:
 ## 4. Auditoria do material do designer (Home — `sitedaciamednovo.txt`)
 
 ### 4.1 O que está BOM (manter)
+
 - **Arquitetura de menu** clara e completa (ver Seção 5).
 - **Logins segmentados** por público (Operadora / Cliente / Colaborador) — maduro.
 - **Provas de autoridade já presentes** na copy: clientes de peso, 5 unidades,
   especialidades, certificações, "entregas em 24h".
 - **Frases de impacto com personalidade** — devem ser preservadas:
-  - *"Você chegou na Ciamed" / "Respire"* (hero)
-  - *"Distribuímos para todo o país!"*
-  - *"Entregas em até 24h!"*
-  - *"Existimos para atender o mercado respeitando o que é mais importante, a vida."*
+  - _"Você chegou na Ciamed" / "Respire"_ (hero)
+  - _"Distribuímos para todo o país!"_
+  - _"Entregas em até 24h!"_
+  - _"Existimos para atender o mercado respeitando o que é mais importante, a vida."_
 - **Acesso rápido** a funções utilitárias (2ª via, cotações, licitações, etc.) —
   bom para o público recorrente.
 - Suporte a **multi-idioma** (PT/EN/ES) — alinhado a uma imagem de empresa de porte.
 
 ### 4.2 O que FALTA / oportunidades (gaps de percepção de grandeza)
-| # | Gap | Impacto | Solução proposta (wireframe) |
-|---|---|---|---|
-| G1 | Sem **faixa de números/estatísticas** | Não comunica escala objetivamente | Banda de KPIs após o hero (20+ anos, 5 unidades, cobertura nacional, 24h) |
-| G2 | Hero não ancora **autoridade/escala** | Primeira impressão fraca | Hero institucional com imagem real de estrutura + headline de posicionamento |
-| G3 | "Por que Ciamed" só existe no **menu** | Diferenciais não aparecem na Home | Bloco de pilares de valor na Home |
-| G4 | "Distribuímos para todo o país" é só **texto** | Cobertura não vira prova visual | **Mapa do Brasil** com unidades destacadas |
-| G5 | Clientes/certificações **soltos** | Prova social subaproveitada | Faixa de logos + selos orquestrada como "confiança" |
-| G6 | Sem hierarquia clara de **público** | Visitante não se reconhece | Trilhas segmentadas (público/privado/fornecedor/carreira) |
-| G7 | Foco utilitário ofusca **institucional** | Site parece "portal", não "marca" | Equilibrar narrativa institucional + utilidades |
+
+| #   | Gap                                            | Impacto                           | Solução proposta (wireframe)                                                 |
+| --- | ---------------------------------------------- | --------------------------------- | ---------------------------------------------------------------------------- |
+| G1  | Sem **faixa de números/estatísticas**          | Não comunica escala objetivamente | Banda de KPIs após o hero (20+ anos, 5 unidades, cobertura nacional, 24h)    |
+| G2  | Hero não ancora **autoridade/escala**          | Primeira impressão fraca          | Hero institucional com imagem real de estrutura + headline de posicionamento |
+| G3  | "Por que Ciamed" só existe no **menu**         | Diferenciais não aparecem na Home | Bloco de pilares de valor na Home                                            |
+| G4  | "Distribuímos para todo o país" é só **texto** | Cobertura não vira prova visual   | **Mapa do Brasil** com unidades destacadas                                   |
+| G5  | Clientes/certificações **soltos**              | Prova social subaproveitada       | Faixa de logos + selos orquestrada como "confiança"                          |
+| G6  | Sem hierarquia clara de **público**            | Visitante não se reconhece        | Trilhas segmentadas (público/privado/fornecedor/carreira)                    |
+| G7  | Foco utilitário ofusca **institucional**       | Site parece "portal", não "marca" | Equilibrar narrativa institucional + utilidades                              |
 
 ### 4.3 Riscos técnicos observados
+
 - O material é um **export WordPress/Elementor** (HTML cheio de classes/scripts do
   construtor). **Não é base técnica recomendada** para o site final de alto padrão —
   serve como **fonte de conteúdo**, não de código. A stack será definida na ETAPA 10.
@@ -142,5 +147,6 @@ diretoria estes critérios **mensuráveis** de "solidez/autoridade/grandeza":
 ---
 
 ## 7. Próximo passo
+
 Seguir para `02-arquitetura-informacao.md` (personas + sitemap multi-público) e,
 na sequência, os wireframes em `wireframes/`.
