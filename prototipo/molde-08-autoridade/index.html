@@ -939,6 +939,7 @@
         background-position: center;
       }
       .dc-scan {
+        display: none;
         position: absolute;
         inset: 0;
         background: repeating-linear-gradient(
@@ -2598,8 +2599,7 @@
             const off = (k - idx + NC) % NC;
             const p = SLOT[off] || PARKED;
             const card = cards[k];
-            card.style.transform =
-              "translate3d(" + p.x + "px," + p.y + "px,0)";
+            card.style.transform = "translate3d(" + p.x + "px," + p.y + "px,0)";
             card.style.width = p.w + "px";
             card.style.height = p.h + "px";
             card.style.zIndex = p.z;
@@ -2609,7 +2609,9 @@
           }
           dots.forEach((d, i) => d.classList.toggle("on", i === idx));
           countEl.textContent =
-            String(idx + 1).padStart(2, "0") + " / " + String(NC).padStart(2, "0");
+            String(idx + 1).padStart(2, "0") +
+            " / " +
+            String(NC).padStart(2, "0");
           resetTilt();
         }
 
