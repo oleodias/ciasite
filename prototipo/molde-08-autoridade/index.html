@@ -875,15 +875,18 @@
       /* palco */
       @keyframes kb {
         from {
-          transform: scale(1);
+          transform: scale(1.02);
         }
         to {
-          transform: scale(1.1);
+          transform: scale(1.12);
         }
       }
       .stage {
         position: relative;
-        height: 660px;
+        height: 540px;
+        width: 1180px;
+        max-width: 100%;
+        margin: 0 auto;
       }
       .slide-title {
         position: absolute;
@@ -896,39 +899,37 @@
         line-height: 1.18;
         letter-spacing: -0.02em;
         color: var(--ink);
-        z-index: 5;
+        z-index: 40;
         transition:
           opacity 0.5s,
           transform 0.5s;
       }
-      /* card principal */
-      .main-card {
+      /* cards que trocam de lugar */
+      .fcard {
         position: absolute;
-        left: 70px;
-        top: 150px;
-        width: 760px;
-        height: 490px;
-        border-radius: 28px;
+        border-radius: 22px;
         overflow: hidden;
-        box-shadow: 0 48px 90px -42px rgba(4, 64, 63, 0.55);
-        z-index: 4;
+        box-shadow: 0 36px 74px -34px rgba(4, 64, 63, 0.5);
+        transition:
+          left 0.8s cubic-bezier(0.5, 0, 0.15, 1),
+          top 0.8s cubic-bezier(0.5, 0, 0.15, 1),
+          width 0.8s cubic-bezier(0.5, 0, 0.15, 1),
+          height 0.8s cubic-bezier(0.5, 0, 0.15, 1),
+          opacity 0.55s ease;
+        will-change: left, top, width, height;
       }
-      .main-card .ph {
+      .fcard .ph {
         position: absolute;
         inset: 0;
         background-size: cover;
         background-position: center;
-        transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: kb 8s ease-in-out infinite alternate;
+        animation: kb 9s ease-in-out infinite alternate;
       }
-      .main-card .ph.b {
-        opacity: 0;
-      }
-      /* setinha no recorte superior-esquerdo */
+      /* setinha no recorte do card principal */
       .arrow-btn {
         position: absolute;
-        left: 32px;
-        top: 195px;
+        left: 90px;
+        top: 250px;
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -937,7 +938,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 6;
+        z-index: 45;
         cursor: pointer;
         transition: 0.25s;
       }
@@ -952,40 +953,6 @@
         fill: none;
         stroke-width: 2.2;
       }
-      /* cards menores espiando */
-      .peek {
-        position: absolute;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 30px 60px -34px rgba(4, 64, 63, 0.5);
-        z-index: 2;
-      }
-      .peek .ph {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        transition: opacity 0.6s ease;
-      }
-      .peek.p1 {
-        width: 400px;
-        height: 260px;
-        right: -20px;
-        top: 20px;
-      }
-      .peek.p2 {
-        width: 320px;
-        height: 215px;
-        right: 70px;
-        bottom: 0;
-      }
-      .peek.p3 {
-        width: 220px;
-        height: 285px;
-        left: -55px;
-        top: 200px;
-        opacity: 0.9;
-      }
       .disc-cta {
         text-align: center;
         margin-top: 56px;
@@ -995,29 +962,25 @@
           height: auto;
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          gap: 16px;
+          width: 100%;
         }
         .slide-title {
           position: static;
           max-width: none;
           margin-bottom: 6px;
         }
-        .main-card {
-          position: static;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 300px;
+        .fcard {
+          position: static !important;
+          left: auto !important;
+          top: auto !important;
+          width: 100% !important;
+          height: 210px !important;
+          z-index: auto !important;
+          opacity: 1 !important;
+          transition: opacity 0.4s ease !important;
         }
         .arrow-btn {
-          display: none;
-        }
-        .peek {
-          position: static;
-          width: 100% !important;
-          height: 150px !important;
-        }
-        .peek.p3 {
           display: none;
         }
       }
@@ -1580,16 +1543,12 @@
 
         <div class="stage reveal">
           <div class="slide-title" id="stitle"></div>
-          <div class="main-card">
-            <div class="ph a" id="mainA"></div>
-            <div class="ph b" id="mainB"></div>
-          </div>
+          <div class="fcard" id="fc0"><div class="ph"></div></div>
+          <div class="fcard" id="fc1"><div class="ph"></div></div>
+          <div class="fcard" id="fc2"><div class="ph"></div></div>
           <div class="arrow-btn" id="arrow" aria-label="Próximo">
             <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
           </div>
-          <div class="peek p1"><div class="ph" id="peek1"></div></div>
-          <div class="peek p2"><div class="ph" id="peek2"></div></div>
-          <div class="peek p3"><div class="ph" id="peek3"></div></div>
         </div>
 
         <div class="disc-cta reveal">
@@ -2227,49 +2186,50 @@
       ];
       const N = SLIDES.length,
         DUR = 5000;
-      const mainA = document.getElementById("mainA"),
-        mainB = document.getElementById("mainB");
-      const peek1 = document.getElementById("peek1"),
-        peek2 = document.getElementById("peek2"),
-        peek3 = document.getElementById("peek3");
+      const SLOTS = [
+        { left: 700, top: 120, w: 420, h: 275, z: 20 },
+        { left: 120, top: 70, w: 640, h: 415, z: 30 },
+        { left: 20, top: 20, w: 280, h: 180, z: 25 },
+      ];
+      const NS = SLOTS.length;
+      const fcards = [
+        document.getElementById("fc0"),
+        document.getElementById("fc1"),
+        document.getElementById("fc2"),
+      ];
       const stitle = document.getElementById("stitle"),
         count = document.getElementById("count"),
-        prog = document.getElementById("prog");
-      const playIco = document.getElementById("playIco");
-      let dIdx = 0,
-        useA = true,
+        prog = document.getElementById("prog"),
+        playIco = document.getElementById("playIco");
+      let slotOf = [1, 0, 2],
+        slideOf = [0, 1, 4],
+        nextImg = 2,
         playing = true,
         dTimer = null;
       const url = (s) => `url('${IMGBASE}${s}')`;
-      function setImg(el, src) {
-        el.style.opacity = 0;
-        setTimeout(() => {
-          el.style.backgroundImage = url(src);
-          el.style.opacity = 1;
-        }, 260);
+      function place(el, s) {
+        el.style.left = s.left + "px";
+        el.style.top = s.top + "px";
+        el.style.width = s.w + "px";
+        el.style.height = s.h + "px";
+        el.style.zIndex = s.z;
       }
-      function dRender() {
-        const front = useA ? mainA : mainB,
-          back = useA ? mainB : mainA;
-        back.style.backgroundImage = url(SLIDES[dIdx].img);
-        back.style.opacity = 1;
-        front.style.opacity = 0;
-        useA = !useA;
-        setImg(peek1, SLIDES[(dIdx + 1) % N].img);
-        setImg(peek2, SLIDES[(dIdx + 2) % N].img);
-        setImg(peek3, SLIDES[(dIdx + 3) % N].img);
+      function setImg(k) {
+        fcards[k].querySelector(".ph").style.backgroundImage = url(
+          SLIDES[slideOf[k]].img,
+        );
+      }
+      function updateTitle() {
+        const idx = slideOf[slotOf.indexOf(1)];
         stitle.style.opacity = 0;
         stitle.style.transform = "translateY(8px)";
         setTimeout(() => {
-          stitle.textContent = SLIDES[dIdx].title;
+          stitle.textContent = SLIDES[idx].title;
           stitle.style.opacity = 1;
           stitle.style.transform = "none";
         }, 220);
         count.textContent =
-          String(dIdx + 1).padStart(2, "0") +
-          " / " +
-          String(N).padStart(2, "0");
-        restartProg();
+          String(idx + 1).padStart(2, "0") + " / " + String(N).padStart(2, "0");
       }
       function restartProg() {
         prog.classList.remove("run");
@@ -2278,36 +2238,63 @@
         if (playing) prog.classList.add("run");
         else prog.style.width = "0";
       }
-      function dGo(n) {
-        dIdx = (n + N) % N;
-        dRender();
-        dSchedule();
+      // avanca: card no ultimo slot recicla (nova imagem + fade); os outros deslizam/escalam
+      function step() {
+        const rk = slotOf.indexOf(NS - 1);
+        for (let k = 0; k < fcards.length; k++) slotOf[k] = (slotOf[k] + 1) % NS;
+        slideOf[rk] = nextImg % N;
+        nextImg++;
+        const el = fcards[rk];
+        el.style.transition = "none";
+        place(el, SLOTS[0]);
+        setImg(rk);
+        el.style.opacity = "0";
+        void el.offsetWidth;
+        fcards.forEach((c, k) => {
+          c.style.transition = "";
+          place(c, SLOTS[slotOf[k]]);
+          c.style.opacity = "1";
+        });
+        updateTitle();
+        restartProg();
       }
-      function dSchedule() {
+      function schedule() {
         clearTimeout(dTimer);
-        if (playing) dTimer = setTimeout(() => dGo(dIdx + 1), DUR);
+        if (playing)
+          dTimer = setTimeout(() => {
+            step();
+            schedule();
+          }, DUR);
       }
-      function dToggle() {
+      function manual() {
+        step();
+        schedule();
+      }
+      function toggle() {
         playing = !playing;
         playIco.innerHTML = playing
           ? '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>'
           : '<path d="M8 5v14l11-7z"/>';
         if (playing) {
           restartProg();
-          dSchedule();
+          schedule();
         } else {
           clearTimeout(dTimer);
           prog.classList.remove("run");
         }
       }
-      document.getElementById("next").onclick = () => dGo(dIdx + 1);
-      document.getElementById("arrow").onclick = () => dGo(dIdx + 1);
-      document.getElementById("prev").onclick = () => dGo(dIdx - 1);
-      document.getElementById("play").onclick = dToggle;
-      mainA.style.backgroundImage = url(SLIDES[0].img);
-      mainA.style.opacity = 1;
-      dRender();
-      dSchedule();
+      document.getElementById("next").onclick = manual;
+      document.getElementById("arrow").onclick = manual;
+      document.getElementById("prev").onclick = manual;
+      document.getElementById("play").onclick = toggle;
+      fcards.forEach((c, k) => {
+        place(c, SLOTS[slotOf[k]]);
+        setImg(k);
+        c.style.opacity = "1";
+      });
+      updateTitle();
+      restartProg();
+      schedule();
 
       // DESTAQUES (notícias) — carrossel com fade + paginacao por bolinhas
       const NEWS = [
