@@ -2517,27 +2517,27 @@
 
         const SLIDES = [
           {
-            hue: 196,
+            img: "frame-01.jpg",
             tag: "frame 01 · vídeo",
             title: "Presentes onde a vida precisa",
           },
           {
-            hue: 158,
+            img: "frame-05.jpg",
             tag: "frame 05 · vídeo",
             title: "Cuidar das pessoas pode mudar o mundo",
           },
           {
-            hue: 222,
+            img: "frame-03.jpg",
             tag: "frame 03 · vídeo",
             title: "Agilidade e rastreabilidade em cada entrega",
           },
           {
-            hue: 135,
+            img: "frame-04.jpg",
             tag: "frame 04 · vídeo",
             title: "Atendimento especializado que a saúde exige",
           },
           {
-            hue: 178,
+            img: "frame-02.jpg",
             tag: "frame 02 · vídeo",
             title: "Nós zelamos pela vida",
           },
@@ -2552,24 +2552,6 @@
           3: { x: -40, y: 150, w: 180, h: 234, z: 6, r: 18, o: 1 },
         };
         const PARKED = { x: -40, y: 150, w: 180, h: 234, z: 1, r: 18, o: 0 };
-
-        function ph(hue, i) {
-          const px = [18, 74, 32, 62, 46][i % 5];
-          const py = [14, 22, 72, 40, 82][i % 5];
-          return (
-            "radial-gradient(130% 130% at " +
-            px +
-            "% " +
-            py +
-            "%, oklch(0.94 0.05 " +
-            hue +
-            ") 0%, oklch(0.74 0.12 " +
-            hue +
-            ") 44%, oklch(0.44 0.13 " +
-            hue +
-            ") 100%)"
-          );
-        }
 
         // Cria os cards
         const cards = SLIDES.map((s, i) => {
@@ -2589,7 +2571,8 @@
             s.title +
             "</div></div>" +
             "</div>";
-          card.querySelector(".dc-ph").style.backgroundImage = ph(s.hue, i);
+          card.querySelector(".dc-ph").style.backgroundImage =
+            'url("' + IMGBASE + s.img + '")';
           card.addEventListener("click", () => {
             if (!card.classList.contains("main")) go(i);
           });
