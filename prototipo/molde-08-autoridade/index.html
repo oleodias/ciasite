@@ -1554,69 +1554,12 @@
       </div>
     </section>
 
-    <!-- DESCUBRA (cards flutuantes — componente GSK) -->
+    <!-- DESCUBRA (cards flutuantes — versão nova via iframe) -->
     <section class="block discover" id="especialidades">
       <div class="container">
-        <div class="disc-top reveal">
-          <span class="eyebrow">Descubra a Ciamed</span>
-          <h2>Descubra como <span class="accent">avançamos</span></h2>
-        </div>
-
-        <div class="ctrl reveal">
-          <span class="count" id="count">01 / 05</span>
-          <div class="bar"><i id="prog"></i></div>
-          <button id="prev" aria-label="Anterior">
-            <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6z" /></svg>
-          </button>
-          <button id="play" aria-label="Pausar">
-            <svg viewBox="0 0 24 24" id="playIco">
-              <path d="M7 5h4v14H7zM13 5h4v14h-4z" />
-            </svg>
-          </button>
-          <button id="next" aria-label="Próximo">
-            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z" /></svg>
-          </button>
-        </div>
-
-        <div class="stage reveal">
-          <div class="slide-title" id="stitle"></div>
-          <div class="main-card">
-            <div class="ph a" id="mainA"></div>
-            <div class="ph b" id="mainB"></div>
-          </div>
-          <div class="arrow-btn" id="arrow" aria-label="Próximo">
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </div>
-          <div class="peek p1"><div class="ph" id="peek1"></div></div>
-          <div class="peek p2"><div class="ph" id="peek2"></div></div>
-          <div class="peek p3"><div class="ph" id="peek3"></div></div>
-        </div>
-
-        <div class="disc-cta reveal">
-          <a href="#" class="btn btn-primary">Conheça a Ciamed →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTE: cards flutuantes NOVOS (via iframe — mantém o atual acima p/ comparar) -->
-    <section class="block" id="especialidades-novo" style="padding-top: 0">
-      <div class="container">
-        <p
-          style="
-            text-align: center;
-            font-size: 0.78rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--teal-deep);
-            font-weight: 700;
-            margin-bottom: 16px;
-          "
-        >
-          ▼ Versão NOVA (em teste) ▼
-        </p>
         <iframe
           src="../componentes/cards-flutuantes-novo/Cards%20flutuantes.html"
-          title="Cards flutuantes — versão nova (teste)"
+          title="Descubra a Ciamed — cards flutuantes"
           loading="lazy"
           style="
             width: 100%;
@@ -1624,9 +1567,11 @@
             border: 0;
             border-radius: 20px;
             display: block;
-            box-shadow: 0 30px 60px -40px rgba(4, 64, 63, 0.4);
           "
         ></iframe>
+        <div class="disc-cta reveal" style="margin-top: 40px">
+          <a href="#" class="btn btn-primary">Conheça a Ciamed →</a>
+        </div>
       </div>
     </section>
 
@@ -2242,104 +2187,9 @@
       document
         .querySelectorAll(".big[data-count]")
         .forEach((el) => cio.observe(el));
-      // cards flutuantes (componente GSK) — autoplay + progresso + play/pause + ‹ ›
+      // Cards flutuantes: versao antiga substituida pelo componente novo (via iframe).
+      // IMGBASE mantido pois o carrossel de Destaques (Noticias) o utiliza.
       const IMGBASE = "../componentes/cards-flutuantes/img/";
-      const SLIDES = [
-        { img: "frame-01.jpg", title: "Presentes onde a vida precisa" },
-        { img: "frame-05.jpg", title: "Cuidar das pessoas pode mudar o mundo" },
-        {
-          img: "frame-03.jpg",
-          title: "Agilidade e rastreabilidade em cada entrega",
-        },
-        {
-          img: "frame-04.jpg",
-          title: "Atendimento especializado que a saúde exige",
-        },
-        { img: "frame-02.jpg", title: "Nós zelamos pela vida" },
-      ];
-      const N = SLIDES.length,
-        DUR = 5000;
-      const mainA = document.getElementById("mainA"),
-        mainB = document.getElementById("mainB");
-      const peek1 = document.getElementById("peek1"),
-        peek2 = document.getElementById("peek2"),
-        peek3 = document.getElementById("peek3");
-      const stitle = document.getElementById("stitle"),
-        count = document.getElementById("count"),
-        prog = document.getElementById("prog");
-      const playIco = document.getElementById("playIco");
-      let dIdx = 0,
-        useA = true,
-        playing = true,
-        dTimer = null;
-      const url = (s) => `url('${IMGBASE}${s}')`;
-      function setImg(el, src) {
-        el.style.opacity = 0;
-        setTimeout(() => {
-          el.style.backgroundImage = url(src);
-          el.style.opacity = 1;
-        }, 260);
-      }
-      function dRender() {
-        const front = useA ? mainA : mainB,
-          back = useA ? mainB : mainA;
-        back.style.backgroundImage = url(SLIDES[dIdx].img);
-        back.style.opacity = 1;
-        front.style.opacity = 0;
-        useA = !useA;
-        setImg(peek1, SLIDES[(dIdx + 1) % N].img);
-        setImg(peek2, SLIDES[(dIdx + 2) % N].img);
-        setImg(peek3, SLIDES[(dIdx + 3) % N].img);
-        stitle.style.opacity = 0;
-        stitle.style.transform = "translateY(8px)";
-        setTimeout(() => {
-          stitle.textContent = SLIDES[dIdx].title;
-          stitle.style.opacity = 1;
-          stitle.style.transform = "none";
-        }, 220);
-        count.textContent =
-          String(dIdx + 1).padStart(2, "0") +
-          " / " +
-          String(N).padStart(2, "0");
-        restartProg();
-      }
-      function restartProg() {
-        prog.classList.remove("run");
-        void prog.offsetWidth;
-        prog.style.setProperty("--dur", DUR + "ms");
-        if (playing) prog.classList.add("run");
-        else prog.style.width = "0";
-      }
-      function dGo(n) {
-        dIdx = (n + N) % N;
-        dRender();
-        dSchedule();
-      }
-      function dSchedule() {
-        clearTimeout(dTimer);
-        if (playing) dTimer = setTimeout(() => dGo(dIdx + 1), DUR);
-      }
-      function dToggle() {
-        playing = !playing;
-        playIco.innerHTML = playing
-          ? '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>'
-          : '<path d="M8 5v14l11-7z"/>';
-        if (playing) {
-          restartProg();
-          dSchedule();
-        } else {
-          clearTimeout(dTimer);
-          prog.classList.remove("run");
-        }
-      }
-      document.getElementById("next").onclick = () => dGo(dIdx + 1);
-      document.getElementById("arrow").onclick = () => dGo(dIdx + 1);
-      document.getElementById("prev").onclick = () => dGo(dIdx - 1);
-      document.getElementById("play").onclick = dToggle;
-      mainA.style.backgroundImage = url(SLIDES[0].img);
-      mainA.style.opacity = 1;
-      dRender();
-      dSchedule();
 
       // DESTAQUES (notícias) — carrossel com fade + paginacao por bolinhas
       const NEWS = [
