@@ -2518,28 +2518,33 @@
 
         const SLIDES = [
           {
-            img: "frame-01.jpg",
-            tag: "frame 01 · vídeo",
+            img: "Prancheta-5.png",
+            pos: "right center",
+            tag: "01 · presença",
             title: "Presentes onde a vida precisa",
           },
           {
-            img: "frame-05.jpg",
-            tag: "frame 05 · vídeo",
+            img: "carreiras_03.jpg",
+            pos: "center 30%",
+            tag: "02 · pessoas",
             title: "Cuidar das pessoas pode mudar o mundo",
           },
           {
-            img: "frame-03.jpg",
-            tag: "frame 03 · vídeo",
+            img: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
+            pos: "center",
+            tag: "03 · logística",
             title: "Agilidade e rastreabilidade em cada entrega",
           },
           {
-            img: "frame-04.jpg",
-            tag: "frame 04 · vídeo",
+            img: "atuacao-xl.jpg",
+            pos: "center 35%",
+            tag: "04 · atendimento",
             title: "Atendimento especializado que a saúde exige",
           },
           {
-            img: "frame-02.jpg",
-            tag: "frame 02 · vídeo",
+            img: "Prancheta-7.png",
+            pos: "center",
+            tag: "05 · compromisso",
             title: "Nós zelamos pela vida",
           },
         ];
@@ -2572,8 +2577,9 @@
             s.title +
             "</div></div>" +
             "</div>";
-          card.querySelector(".dc-ph").style.backgroundImage =
-            'url("' + IMGBASE + s.img + '")';
+          const ph = card.querySelector(".dc-ph");
+          ph.style.backgroundImage = 'url("' + IMGBASE + s.img + '")';
+          if (s.pos) ph.style.backgroundPosition = s.pos;
           card.addEventListener("click", () => {
             if (!card.classList.contains("main")) go(i);
           });
@@ -2694,8 +2700,8 @@
       // DESTAQUES (notícias) — carrossel com fade + paginacao por bolinhas
       const NEWS = [
         {
-          main: "frame-01.jpg",
-          sub: "frame-04.jpg",
+          main: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
+          sub: "atuacao-xl.jpg",
           date: "12 jun · 2026",
           title:
             "Cadeia fria em oncológicos: como garantir segurança de ponta a ponta",
@@ -2703,24 +2709,24 @@
             "Cada detalhe faz diferença no transporte de medicamentos sensíveis — da armazenagem à última milha. [...]",
         },
         {
-          main: "frame-03.jpg",
-          sub: "frame-02.jpg",
+          main: "atuacao-xl.jpg",
+          sub: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
           date: "28 abr · 2026",
           title: "Comunicado oficial: novas regras de dispensação de especiais",
           excerpt:
             "Entenda o que muda na prescrição e no fornecimento de medicamentos especiais para o setor. [...]",
         },
         {
-          main: "frame-05.jpg",
-          sub: "frame-01.jpg",
+          main: "carreiras_03.jpg",
+          sub: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
           date: "31 mar · 2026",
           title: "Boas Práticas ANVISA: o que a certificação realmente garante",
           excerpt:
             "Rigor regulatório em toda a cadeia como base da confiança no setor da saúde. [...]",
         },
         {
-          main: "frame-04.jpg",
-          sub: "frame-05.jpg",
+          main: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
+          sub: "carreiras_03.jpg",
           date: "15 fev · 2026",
           title: "Ciamed amplia cobertura logística e reduz prazos no Sudeste",
           excerpt:
