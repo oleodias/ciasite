@@ -802,23 +802,6 @@
         overflow: hidden;
       }
       /* ===== Cards flutuantes (nativo) ===== */
-      .dc-glow {
-        position: absolute;
-        top: -120px;
-        left: 50%;
-        width: 760px;
-        height: 520px;
-        transform: translateX(-50%);
-        background: radial-gradient(
-          50% 50% at 50% 50%,
-          rgba(0, 179, 178, 0.26) 0%,
-          transparent 72%
-        );
-        filter: blur(20px);
-        animation: glowPulse 9s ease-in-out infinite;
-        pointer-events: none;
-        z-index: 0;
-      }
       .discover .container {
         position: relative;
         z-index: 1;
@@ -1076,17 +1059,6 @@
       .dc-cta {
         text-align: center;
         margin-top: 52px;
-      }
-      @keyframes glowPulse {
-        0%,
-        100% {
-          opacity: 0.55;
-          transform: translateX(-50%) scale(1);
-        }
-        50% {
-          opacity: 0.85;
-          transform: translateX(-50%) scale(1.08);
-        }
       }
       @media (max-width: 560px) {
         .dc-cap {
@@ -1852,7 +1824,6 @@
 
     <!-- DESCUBRA (cards flutuantes — componente nativo: hero + peeks que rotacionam) -->
     <section class="block discover" id="especialidades">
-      <div class="dc-glow"></div>
       <div class="container">
         <div class="dc-head reveal">
           <span class="dc-eyebrow">Descubra a Ciamed</span>
