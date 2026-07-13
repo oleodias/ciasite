@@ -67,6 +67,27 @@ window.NOTICIAS = [
     `,
   },
   {
+    id: "pegue-a-latinha-acao-socioambiental-ame",
+    titulo:
+      "“Pegue a latinha e bate uma na outra”: ação socioambiental beneficia a AME de Encantado",
+    categoria: "Responsabilidade social",
+    data: "2023-10-26",
+    dataLabel: "26 de outubro de 2023",
+    resumo:
+      "A tarefa socioambiental da 2ª Gincana da Qualidade arrecadou latas de alumínio e lacres, doados à Associação Pró Menor de Encantado (AME).",
+    imagem: "../../assets/noticias/2023-10-latinhas-ame.jpg",
+    legenda:
+      "Integrantes da Comissão Organizadora da Gincana com o material arrecadado, entregue à Associação Pró Menor de Encantado (AME).",
+    corpo: `
+      <p>A 2ª Gincana da Qualidade seguiu a mesma linha da primeira edição: além do treinamento dos colaboradores, teve como foco o ambiente em que convivemos, gerando impacto social e ambiental.</p>
+      <p>Neste ano, a “tarefa socioambiental” consistiu na arrecadação de latas de alumínio e lacres. O material é amplamente reciclado e serve como fonte de renda para milhares de brasileiros e para instituições que o revendem, permitindo que as próprias produtoras de alumínio criem produtos com custos mais baixos. Outro ponto positivo é que o alumínio reciclado mantém a mesma qualidade do material novo.</p>
+      <p>A arrecadação foi realizada pelos colaboradores por meio da Tarefa 03 — “Pegue a latinha e bate uma na outra”. As latas e os lacres foram entregues por integrantes da Comissão Organizadora da Gincana, a farmacêutica Suélen e a analista de marketing Josinara, à Associação Pró Menor de Encantado (AME).</p>
+      <p>A instituição beneficiada utiliza o recurso oriundo da venda desse material para a manutenção da sede e a aquisição de insumos. Vale destacar que a AME também foi atingida pela cheia do Rio Taquari, o que torna a ação ainda mais importante.</p>
+      <p>Uma iniciativa em que cuidamos do nosso meio ambiente e ajudamos ao próximo!</p>
+      <p class="pull">O que importa é a VIDA. Cuidar das pessoas pode mudar o mundo.</p>
+    `,
+  },
+  {
     id: "visita-tecnica-hospital-bruno-born",
     titulo:
       "Hospital Bruno Born realiza visita técnica à matriz da Ciamed",
