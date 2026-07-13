@@ -2429,6 +2429,8 @@
       +Mapa, reveal ao rolar.
     </div>
 
+    <!-- base de noticias (compartilhada com a aba Noticias) -->
+    <script src="noticias/dados.js"></script>
     <script>
       // header solid
       const hdr = document.getElementById("hdr");
@@ -2747,56 +2749,42 @@
       })();
 
       // DESTAQUES (notícias) — carrossel com fade + paginacao por bolinhas
-      const NEWS = [
-        {
-          main: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
-          sub: "atuacao-xl.jpg",
-          date: "12 jun · 2026",
-          title:
-            "Cadeia fria em oncológicos: como garantir segurança de ponta a ponta",
-          excerpt:
-            "Cada detalhe faz diferença no transporte de medicamentos sensíveis — da armazenagem à última milha. [...]",
-        },
-        {
-          main: "atuacao-xl.jpg",
-          sub: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
-          date: "28 abr · 2026",
-          title: "Comunicado oficial: novas regras de dispensação de especiais",
-          excerpt:
-            "Entenda o que muda na prescrição e no fornecimento de medicamentos especiais para o setor. [...]",
-        },
-        {
-          main: "carreiras_03.jpg",
-          sub: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
-          date: "31 mar · 2026",
-          title: "Boas Práticas ANVISA: o que a certificação realmente garante",
-          excerpt:
-            "Rigor regulatório em toda a cadeia como base da confiança no setor da saúde. [...]",
-        },
-        {
-          main: "chuttersnap-BNBA1h-NgdY-unsplash.jpg",
-          sub: "carreiras_03.jpg",
-          date: "15 fev · 2026",
-          title: "Ciamed amplia cobertura logística e reduz prazos no Sudeste",
-          excerpt:
-            "Nova estrutura fortalece a entrega em até 24h e a agilidade para hospitais e clínicas. [...]",
-        },
-      ];
+      // DESTAQUES — vitrine das noticias reais (fonte: noticias/dados.js).
+      // As imagens em dados.js sao relativas a pasta noticias/ (../../); na
+      // home (um nivel acima) o caminho correto e ../ — por isso o ajuste.
+      const homeImg = (p) => (p || "").replace("../../", "../");
+      const artUrl = (id) => "noticias/artigo.html?id=" + encodeURIComponent(id);
+      const SRC = (window.NOTICIAS || []).slice(0, 4);
+      const NEWS = SRC.map((n, i) => ({
+        main: homeImg(n.imagem),
+        sub: homeImg((SRC[(i + 1) % SRC.length] || n).imagem),
+        date: n.dataLabel,
+        title: n.titulo,
+        excerpt: n.resumo,
+        href: artUrl(n.id),
+      }));
       const destMain = document.getElementById("destMain"),
         destSub = document.getElementById("destSub"),
         destTitle = document.getElementById("destTitle"),
         destExcerpt = document.getElementById("destExcerpt"),
         destDate = document.getElementById("destDate"),
+        destLink = document.getElementById("destLink"),
         destNav = document.getElementById("destNav");
-      const nurl = (s) => `url('${IMGBASE}${s}')`;
+      const nurl = (s) => `url('${s}')`;
       let nIdx = 0,
         nTimer = null;
-      NEWS.forEach((_, i) => {
-        const b = document.createElement("i");
-        if (!i) b.className = "on";
-        b.onclick = () => nGo(i);
-        destNav.appendChild(b);
-      });
+      if (NEWS.length) {
+        destMain.style.cursor = "pointer";
+        destMain.onclick = () => (location.href = NEWS[nIdx].href);
+        NEWS.forEach((_, i) => {
+          const b = document.createElement("i");
+          if (!i) b.className = "on";
+          b.onclick = () => nGo(i);
+          destNav.appendChild(b);
+        });
+        nRender();
+        nSchedule();
+      }
       function nRender() {
         const s = NEWS[nIdx],
           els = [destMain, destSub, destTitle, destExcerpt, destDate];
@@ -2807,6 +2795,7 @@
           destTitle.textContent = s.title;
           destExcerpt.textContent = s.excerpt;
           destDate.textContent = s.date;
+          destLink.href = s.href;
           els.forEach((el) => (el.style.opacity = 1));
         }, 230);
         [...destNav.children].forEach((d, j) =>
@@ -2822,8 +2811,6 @@
         clearTimeout(nTimer);
         nTimer = setTimeout(() => nGo(nIdx + 1), 6000);
       }
-      nRender();
-      nSchedule();
 
       // COBERTURA — hover sincronizado entre mapa e lista de unidades
       (function () {
