@@ -40,7 +40,6 @@
         <a class="art-back" href="index.html">← Voltar para Notícias</a>
         <div class="art-head">
           <div class="news-meta">
-            <span class="news-cat" id="aCat"></span>
             <span class="date" id="aDate"></span>
           </div>
           <h1 id="aTitle"></h1>
@@ -268,7 +267,6 @@
         location.replace("index.html");
       } else {
         document.title = n.titulo + " — Ciamed";
-        document.getElementById("aCat").textContent = n.categoria;
         document.getElementById("aDate").textContent = n.dataLabel;
         document.getElementById("aTitle").textContent = n.titulo;
         const img = document.getElementById("aImg");
@@ -315,9 +313,7 @@
                 esc(o.titulo) +
                 '" /></div>' +
                 '<div class="body">' +
-                '<div class="news-meta"><span class="news-cat">' +
-                esc(o.categoria) +
-                '</span><span class="date">' +
+                '<div class="news-meta"><span class="date">' +
                 esc(o.dataLabel) +
                 "</span></div>" +
                 "<h3>" +
