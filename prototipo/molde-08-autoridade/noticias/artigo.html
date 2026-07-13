@@ -50,6 +50,10 @@
         </figure>
         <figcaption class="art-cap" id="aCap"></figcaption>
         <div class="prose" id="aBody"></div>
+        <div class="art-gallery" id="aGallery" style="display: none">
+          <h2>Galeria</h2>
+          <div class="gallery-grid" id="aGalleryGrid"></div>
+        </div>
         <div class="art-foot">
           <span class="sign">Comunicação Ciamed</span>
           <a class="btn btn-out" href="index.html">Ver todas as notícias →</a>
@@ -254,6 +258,26 @@
         img.alt = n.titulo;
         document.getElementById("aCap").textContent = n.legenda || "";
         document.getElementById("aBody").innerHTML = n.corpo;
+
+        // galeria (opcional)
+        if (n.galeria && n.galeria.length) {
+          document.getElementById("aGallery").style.display = "";
+          document.getElementById("aGalleryGrid").innerHTML = n.galeria
+            .map(
+              (g) =>
+                "<figure><img src=" +
+                '"' +
+                esc(g.src) +
+                '" alt="' +
+                esc(g.legenda || n.titulo) +
+                '" />' +
+                (g.legenda
+                  ? "<figcaption>" + esc(g.legenda) + "</figcaption>"
+                  : "") +
+                "</figure>",
+            )
+            .join("");
+        }
 
         // outras notícias (até 3)
         const rest = N.filter((x) => x.id !== n.id).slice(0, 3);

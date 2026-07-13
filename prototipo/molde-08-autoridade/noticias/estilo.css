@@ -382,6 +382,70 @@ nav.main a.on {
   padding: 6px 0 6px 22px;
   margin: 34px 0;
 }
+.prose ul.cores {
+  list-style: none;
+  margin: 6px 0 26px;
+  display: grid;
+  gap: 10px;
+}
+.prose ul.cores li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  background: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 1rem;
+}
+.prose ul.cores .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  transform: translateY(1px);
+}
+
+/* galeria de imagens do artigo */
+.art-gallery {
+  margin: 40px 0 4px;
+}
+.art-gallery h2 {
+  font-size: 1.35rem;
+  margin-bottom: 20px;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-grid figure {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--mist);
+  border: 1px solid var(--line);
+}
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.gallery-grid figure:hover img {
+  transform: scale(1.05);
+}
+.gallery-grid figcaption {
+  font-size: 0.8rem;
+  color: var(--gray);
+  padding: 10px 12px;
+}
+@media (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 .art-foot {
   margin: 46px 0 10px;
   padding-top: 28px;
