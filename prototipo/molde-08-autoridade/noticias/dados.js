@@ -42,6 +42,11 @@ window.NOTICIAS = [
       { src: "../../assets/noticias/gincana/foto-4.jpg", legenda: "" },
       { src: "../../assets/noticias/gincana/foto-5.jpg", legenda: "" },
       { src: "../../assets/noticias/gincana/foto-6.jpg", legenda: "" },
+      { src: "../../assets/noticias/gincana/foto-7.jpg", legenda: "" },
+      { src: "../../assets/noticias/gincana/foto-8.jpg", legenda: "" },
+      { src: "../../assets/noticias/gincana/foto-9.jpg", legenda: "" },
+      { src: "../../assets/noticias/gincana/foto-10.jpg", legenda: "" },
+      { src: "../../assets/noticias/gincana/foto-11.jpg", legenda: "" },
     ],
     corpo: `
       <p>Conforme o calendário da empresa, a terceira semana de outubro é dedicada aos Treinamentos Anuais realizados pelo Departamento da Qualidade. Em 2023, mantendo a tradição, a Ciamed deu sequência à Gincana da Qualidade, que lançou sua 2ª edição no início de outubro, com tarefas relacionadas a ações socioambientais e alusivas aos 20 anos da empresa.</p>
