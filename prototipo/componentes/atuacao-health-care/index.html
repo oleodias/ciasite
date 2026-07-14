@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ciamed — Título da seção de setores · "Ciamed Health Care" (2 variações)</title>
+    <!--
+      ==========================================================================
+      BANCADA DE COMPARAÇÃO — título da seção de setores (Molde 08 · Autoridade)
+      --------------------------------------------------------------------------
+      A Renata pediu que os 3 cards de setores sejam introduzidos pelo título
+      "Ciamed Health Care" (tratado como TÍTULO da seção — não é selo/sub-marca
+      nem etiqueta). Aqui estão 2 variações do tratamento, com os cards reais,
+      para comparar antes de levar à home. Nada aqui altera a home.
+
+        Var A — "Health Care" em teal, alinhado à esquerda (estilo atual da seção)
+        Var B — título sólido, centralizado, subtítulo curto (mais editorial)
+
+      Os rótulos "VARIAÇÃO A/B" e a barra do topo são só desta bancada — não
+      fazem parte do design.
+      ==========================================================================
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --teal: #00b3b2;
+        --teal-deep: #0a6b6a;
+        --teal-dark: #04403f;
+        --mint: #8af0ef;
+        --ink: #0a2b2a;
+        --gray: #6e6e6e;
+        --line: #e3edeb;
+        --mist: #f1f8f6;
+        --paper: #fff;
+        --maxw: 1180px;
+        --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --display: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: var(--font);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1, h2, h3 {
+        font-family: var(--display);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        font-weight: 700;
+      }
+      a { color: inherit; text-decoration: none; }
+      .container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+      section.block { padding: 90px 0; }
+      .accent { color: var(--teal); }
+
+      /* ---- seção de setores (copiado do molde) ---- */
+      .atuacao { background: var(--mist); }
+      .sec-head { max-width: 760px; margin-bottom: 54px; }
+      .sec-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); margin: 14px 0 14px; }
+      .sec-head p { color: var(--gray); font-size: 1.08rem; }
+      .agrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .acard {
+        display: block;
+        background: #fff;
+        border: 1px solid #eaf2f0;
+        border-radius: 20px;
+        padding: 38px 32px;
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      .acard::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: var(--teal);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: 0.35s;
+      }
+      .acard:hover {
+        border-color: var(--teal);
+        box-shadow: 0 30px 54px -30px rgba(0, 179, 178, 0.45);
+        transform: translateY(-5px);
+      }
+      .acard:hover::before { transform: scaleY(1); }
+      .acard .ic {
+        width: 56px; height: 56px;
+        border-radius: 14px;
+        background: var(--mist);
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 20px;
+      }
+      .acard .ic svg {
+        width: 28px; height: 28px;
+        stroke: var(--teal); fill: none; stroke-width: 1.7;
+      }
+      .acard h3 { font-size: 1.28rem; margin-bottom: 10px; }
+      .acard p { color: var(--gray); font-size: 0.98rem; margin-bottom: 16px; }
+      .acard .lk { color: var(--teal-deep); font-weight: 700; font-size: 0.92rem; }
+
+      /* ---- Variação B: cabeçalho centralizado ---- */
+      .sec-head.center { max-width: 820px; margin-left: auto; margin-right: auto; text-align: center; }
+      .sec-head.center h2 { font-size: clamp(2.1rem, 4vw, 3.1rem); }
+      .sec-head.center p { font-size: 1.16rem; max-width: 620px; margin: 0 auto; }
+
+      @media (max-width: 900px) {
+        .agrid { grid-template-columns: 1fr; }
+      }
+
+      /* ---- cromo da bancada (não faz parte do design) ---- */
+      .bench-top {
+        background: var(--ink); color: #cdeeed;
+        font-size: 0.86rem; padding: 12px 28px; text-align: center;
+      }
+      .bench-top b { color: #fff; }
+      .bench-tag {
+        max-width: var(--maxw); margin: 0 auto; padding: 0 28px;
+      }
+      .bench-tag span {
+        display: inline-block;
+        margin: 40px 0 -20px;
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+        color: #fff; background: var(--teal-deep);
+        padding: 6px 12px; border-radius: 6px;
+      }
+      .bench-sep { height: 1px; background: var(--line); max-width: var(--maxw); margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <div class="bench-top">
+      Bancada de comparação — título <b>“Ciamed Health Care”</b> · escolha A ou B (os cards são os reais da home)
+    </div>
+
+    <!-- ===================== VARIAÇÃO A ===================== -->
+    <div class="bench-tag"><span>Variação A · “Health Care” em teal · alinhado à esquerda</span></div>
+    <section class="block atuacao">
+      <div class="container">
+        <div class="sec-head" style="max-width: 760px">
+          <h2>Ciamed <span class="accent">Health Care</span></h2>
+          <p>
+            Uma parceira para cada setor da saúde — do varejo farmacêutico às
+            estruturas hospitalares e instituições públicas.
+          </p>
+        </div>
+        <div class="agrid">
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" /></svg>
+            </div>
+            <h3>Setor Público</h3>
+            <p>Licitações, ordem judicial e fornecimento a instituições — com regularidade e idoneidade comprovadas.</p>
+            <span class="lk">Saiba mais →</span>
+          </a>
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 12h.01M15 12h.01M9 16h.01M15 16h.01" /></svg>
+            </div>
+            <h3>Setor Privado</h3>
+            <p>Hospitais, clínicas, operadoras e varejo farmacêutico — agilidade com entregas em até 24h.</p>
+            <span class="lk">Saiba mais →</span>
+          </a>
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M3 21V9l6-3v3l6-3v3l6-3v15M3 21h18M8 21v-5M13 21v-5" /></svg>
+            </div>
+            <h3>Indústria &amp; Laboratórios</h3>
+            <p>Seja nosso parceiro de distribuição e alcance capilaridade nacional com quem o mercado confia.</p>
+            <span class="lk">Seja parceiro →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="bench-sep"></div>
+
+    <!-- ===================== VARIAÇÃO B ===================== -->
+    <div class="bench-tag"><span>Variação B · título sólido · centralizado · subtítulo curto</span></div>
+    <section class="block atuacao">
+      <div class="container">
+        <div class="sec-head center">
+          <h2>Ciamed Health Care</h2>
+          <p>Uma parceira para cada setor da saúde.</p>
+        </div>
+        <div class="agrid">
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" /></svg>
+            </div>
+            <h3>Setor Público</h3>
+            <p>Licitações, ordem judicial e fornecimento a instituições — com regularidade e idoneidade comprovadas.</p>
+            <span class="lk">Saiba mais →</span>
+          </a>
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M4 21h16M9 12h.01M15 12h.01M9 16h.01M15 16h.01" /></svg>
+            </div>
+            <h3>Setor Privado</h3>
+            <p>Hospitais, clínicas, operadoras e varejo farmacêutico — agilidade com entregas em até 24h.</p>
+            <span class="lk">Saiba mais →</span>
+          </a>
+          <a class="acard" href="#">
+            <div class="ic">
+              <svg viewBox="0 0 24 24"><path d="M3 21V9l6-3v3l6-3v3l6-3v15M3 21h18M8 21v-5M13 21v-5" /></svg>
+            </div>
+            <h3>Indústria &amp; Laboratórios</h3>
+            <p>Seja nosso parceiro de distribuição e alcance capilaridade nacional com quem o mercado confia.</p>
+            <span class="lk">Seja parceiro →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
