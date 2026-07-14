@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ciamed — Componente · Destaques (carrossel de notícias)</title>
+    <!--
+      ==========================================================================
+      COMPONENTE ISOLADO: carrossel "Destaques" da home (Molde 08 · Autoridade)
+      --------------------------------------------------------------------------
+      Este arquivo reúne, de forma standalone, o HTML + CSS + JS do bloco
+      "Destaques" que aparece em movimento no rodapé da home. Foi extraído de
+      prototipo/molde-08-autoridade/index.html para servir de bancada de
+      remasterização — mexa aqui à vontade sem tocar na home.
+
+      Fonte dos dados: window.NOTICIAS (prototipo/.../noticias/dados.js). As
+      imagens em dados.js usam caminho "../../assets/noticias/..."; como esta
+      pasta (componentes/destaques-noticias/) tem a mesma profundidade que a
+      pasta noticias/, os caminhos funcionam sem ajuste.
+
+      Quando a nova versão estiver pronta, o bloco volta para a home:
+        - CSS  -> dentro do <style> do molde (região ".destaques ...")
+        - HTML -> <section class="block destaques" id="destaques"> ... </section>
+        - JS   -> região "// DESTAQUES" do <script> do molde
+      ==========================================================================
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Franklin:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---- tokens da marca (copiados do molde p/ o componente rodar sozinho) ---- */
+      :root {
+        --teal: #00b3b2;
+        --teal-deep: #0a6b6a;
+        --teal-dark: #04403f;
+        --mint: #8af0ef;
+        --ink: #0a2b2a;
+        --gray: #6e6e6e;
+        --line: #e3edeb;
+        --mist: #f1f8f6;
+        --paper: #fff;
+        --maxw: 1180px;
+        --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --display: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font);
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--display);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        font-weight: 700;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ---- utilitários usados pelo bloco ---- */
+      .container {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      section.block {
+        padding: 100px 0;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 14px 26px;
+        border-radius: 999px;
+        transition: 0.25s;
+        cursor: pointer;
+        border: 1.6px solid transparent;
+      }
+      .btn-out {
+        border-color: var(--teal);
+        color: var(--teal-deep);
+      }
+      .btn-out:hover {
+        background: var(--teal);
+        color: #fff;
+      }
+      .eyebrow {
+        font-weight: 600;
+        font-size: 0.76rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--teal);
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        background: var(--teal);
+      }
+      /* reveal ao rolar (uma vez) */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+          transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* =====================================================================
+         BLOCO DESTAQUES — estilos próprios
+         ===================================================================== */
+      .destaques {
+        background: #fff;
+      }
+      .dest-head {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .dest-head h2 {
+        font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+        margin-top: 12px;
+      }
+      .dest-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .dest-visual {
+        position: relative;
+        min-height: 440px;
+      }
+      .dest-deco {
+        position: absolute;
+        right: -14px;
+        top: 0;
+        width: 132px;
+        height: 150px;
+        z-index: 1;
+        background-image: radial-gradient(var(--teal) 1.6px, transparent 1.7px);
+        background-size: 15px 15px;
+        opacity: 0.45;
+      }
+      .dest-main {
+        position: relative;
+        z-index: 2;
+        width: 82%;
+        height: 400px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 40px 72px -40px rgba(4, 64, 63, 0.5);
+        background: #dfeeeb center/cover no-repeat;
+        transition: opacity 0.45s;
+      }
+      .dest-sub {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        bottom: -16px;
+        width: 47%;
+        height: 236px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 6px solid #fff;
+        box-shadow: 0 30px 60px -30px rgba(4, 64, 63, 0.55);
+        background: #cfe6e0 center/cover no-repeat;
+        transition: opacity 0.45s;
+      }
+      .dest-text {
+        max-width: 470px;
+      }
+      .dest-date {
+        display: inline-block;
+        font-size: 0.76rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal-deep);
+        font-weight: 600;
+        margin-bottom: 14px;
+        transition: opacity 0.45s;
+      }
+      .dest-text h3 {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+        transition: opacity 0.45s;
+      }
+      .dest-text p {
+        color: var(--gray);
+        font-size: 1.02rem;
+        margin-bottom: 28px;
+        transition: opacity 0.45s;
+      }
+      .dest-nav {
+        display: flex;
+        justify-content: center;
+        gap: 11px;
+        margin-top: 60px;
+      }
+      .dest-nav i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #cfe6e0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .dest-nav i.on {
+        background: var(--teal);
+        width: 28px;
+        border-radius: 6px;
+      }
+      @media (max-width: 900px) {
+        .dest-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .dest-visual {
+          min-height: 0;
+        }
+        .dest-main {
+          width: 100%;
+          height: 280px;
+        }
+        .dest-sub {
+          width: 52%;
+          height: 160px;
+          right: 6px;
+          bottom: -12px;
+        }
+        .dest-deco {
+          display: none;
+        }
+        .dest-text {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =====================================================================
+         BLOCO DESTAQUES — markup
+         ===================================================================== -->
+    <section class="block destaques" id="destaques">
+      <div class="container">
+        <div class="dest-head reveal">
+          <span class="eyebrow">Ciamed em movimento</span>
+          <h2>Destaques</h2>
+        </div>
+        <div class="dest-grid reveal">
+          <div class="dest-visual">
+            <div class="dest-deco"></div>
+            <div class="dest-main" id="destMain"></div>
+            <div class="dest-sub" id="destSub"></div>
+          </div>
+          <div class="dest-text">
+            <span class="dest-date" id="destDate"></span>
+            <h3 id="destTitle"></h3>
+            <p id="destExcerpt"></p>
+            <a href="#" class="btn btn-out" id="destLink">Leia mais →</a>
+          </div>
+        </div>
+        <div class="dest-nav" id="destNav"></div>
+      </div>
+    </section>
+
+    <!-- base de noticias (compartilhada com a aba Noticias) -->
+    <script src="../../molde-08-autoridade/noticias/dados.js"></script>
+    <script>
+      // =====================================================================
+      // BLOCO DESTAQUES — motor do carrossel
+      // Fonte: window.NOTICIAS (dados.js). Neste componente as imagens usam o
+      // caminho cru de dados.js ("../../assets/noticias/..."), que resolve
+      // certo porque a pasta esta na mesma profundidade que noticias/.
+      // (Na home o caminho e reescrito de "../../" para "../".)
+      // =====================================================================
+      const artUrl = (id) =>
+        "../../molde-08-autoridade/noticias/artigo.html?id=" +
+        encodeURIComponent(id);
+      const SRC = (window.NOTICIAS || []).slice(0, 4);
+      const NEWS = SRC.map((n, i) => ({
+        main: n.imagem,
+        sub: (SRC[(i + 1) % SRC.length] || n).imagem,
+        date: n.dataLabel,
+        title: n.titulo,
+        excerpt: n.resumo,
+        href: artUrl(n.id),
+      }));
+      const destMain = document.getElementById("destMain"),
+        destSub = document.getElementById("destSub"),
+        destTitle = document.getElementById("destTitle"),
+        destExcerpt = document.getElementById("destExcerpt"),
+        destDate = document.getElementById("destDate"),
+        destLink = document.getElementById("destLink"),
+        destNav = document.getElementById("destNav");
+      const nurl = (s) => `url('${s}')`;
+      let nIdx = 0,
+        nTimer = null;
+      if (NEWS.length) {
+        destMain.style.cursor = "pointer";
+        destMain.onclick = () => (location.href = NEWS[nIdx].href);
+        NEWS.forEach((_, i) => {
+          const b = document.createElement("i");
+          if (!i) b.className = "on";
+          b.onclick = () => nGo(i);
+          destNav.appendChild(b);
+        });
+        nRender();
+        nSchedule();
+      }
+      function nRender() {
+        const s = NEWS[nIdx],
+          els = [destMain, destSub, destTitle, destExcerpt, destDate];
+        els.forEach((el) => (el.style.opacity = 0.2));
+        setTimeout(() => {
+          destMain.style.backgroundImage = nurl(s.main);
+          destSub.style.backgroundImage = nurl(s.sub);
+          destTitle.textContent = s.title;
+          destExcerpt.textContent = s.excerpt;
+          destDate.textContent = s.date;
+          destLink.href = s.href;
+          els.forEach((el) => (el.style.opacity = 1));
+        }, 230);
+        [...destNav.children].forEach((d, j) =>
+          d.classList.toggle("on", j === nIdx),
+        );
+      }
+      function nGo(i) {
+        nIdx = (i + NEWS.length) % NEWS.length;
+        nRender();
+        nSchedule();
+      }
+      function nSchedule() {
+        clearTimeout(nTimer);
+        nTimer = setTimeout(() => nGo(nIdx + 1), 6000);
+      }
+
+      // reveal ao rolar (uma vez; NAO repete ao voltar)
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
