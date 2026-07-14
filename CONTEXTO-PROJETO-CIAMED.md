@@ -7,12 +7,17 @@
 
 ## 0. Como retomar (faça primeiro)
 
-1. O repositório é **`oleodias/ciasite`**, trabalhamos direto na branch **`main`**.
+1. O repositório é **`oleodias/ciasite`**. O site publicado sai da branch **`main`**.
 2. `git pull origin main` para pegar o estado mais recente.
 3. Site publicado (GitHub Pages): **https://oleodias.github.io/ciasite/prototipo/**
    - A raiz `https://oleodias.github.io/ciasite/` redireciona para `/prototipo/`.
    - Todo push na `main` atualiza o site em ~1–2 min.
-4. **Sempre committar e dar push na `main`** após cada mudança (com retry/backoff em erro de rede).
+4. **Fluxo git combinado:** desenvolver na branch de feature designada da sessão
+   (ex.: `claude/ciamed-molde-08-authority-*`), depois `git fetch origin main` →
+   `git rebase origin/main` → `git checkout main` → `git merge --ff-only <feature>` →
+   push `main` (retry/backoff em erro de rede) → voltar p/ a feature e `merge --ff-only main`.
+   **O Leo frequentemente commita direto na `main`** entre pushes — sempre rebase antes.
+   Se não houver branch designada, pode trabalhar direto na `main`.
 
 ### ⚙️ Método de trabalho combinado (IMPORTANTE)
 
@@ -58,8 +63,9 @@
 - **Cor primária (teal):** `#00B3B2` (Pantone 326 C). Trabalhar com a escala de tons.
 - **Cinza institucional:** `#6E6E6E`.
 - **Apoio p/ fundos escuros imersivos:** petróleo `#02302F` / `#04211F` e menta `#8AF0EF`.
-- **Tipografia oficial:** **Helvetica Neue** (corpo). Nos títulos dos moldes 08/11 usamos
-  **Sora** (auto-hospedada) — dá um ar premium sem fugir da marca.
+- **Tipografia oficial:** **Helvetica Neue** (corpo). No **Molde 08 atual** o protótipo usa
+  **Inter** (corpo) + **Libre Franklin** (títulos/display), carregadas via Google Fonts `<link>` —
+  dão um ar premium e legível. Tokens: `--font:"Inter"`, `--display:"Libre Franklin"`.
 - **Ícone:** "A" triangular (seta/montanha). **Pattern:** textura do "A" triangular repetido
   (arquivo `prototipo/assets/flecha cinza fundo de tela.png`, usado no molde 11).
 - Manual completo: `prototipo/assets/Manual de Identidade Visual CIAMED correto.pdf`
@@ -85,22 +91,27 @@ Todos em `prototipo/molde-*/index.html`. Índice navegável: `prototipo/index.ht
 
 ### ⭐ Molde 08 "Autoridade" — o foco atual
 
-Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
+Arquivo: `prototipo/molde-08-autoridade/index.html` (~2850 linhas, HTML de arquivo único
+com `<style>` inline). Scroll NORMAL, com reveal-ao-rolar (IntersectionObserver) que não
+repete na volta. **Ordem atual das seções (validada pelo Leo em 07/2026):**
 
-1. **Hero:** vídeo em tela cheia + **título SVG** "Você chegou na Ciamed" (com "Ciamed"
-   cursivo teal), posicionado no canto inferior esquerdo e deslocado na **diagonal**
-   (`transform: translate(70px,-70px)` no `.hero .inner`). **Sem subtítulo e sem botão** —
-   só o título. Overlay concentrado no canto inf. esquerdo p/ deixar o vídeo aparente.
-2. **Marcas (marquee):** faixa de logos passando + faixa de certificações. Título
-   "Distribuímos as marcas em que o Brasil confia".
-3. **Por que Ciamed:** 4 pilares.
-4. **Atuação:** 3 trilhas (Setor Público / Privado / Indústria & Laboratórios).
-5. **Cobertura + Mapa:** mapa do Brasil (SVG) com as 5 unidades + lista.
-6. **Especialidades:** cards flutuantes (versão simplificada, GSK-inspired).
-7. **CTA + Footer.**
+1. **Hero:** vídeo em tela cheia + **título** "Você chegou na Ciamed". Header com **logo
+   wordmark que troca** (`../assets/logo-wordmark.png`) e vira sólido no scroll.
+2. **Atuação (Setores):** "Uma parceira para cada setor da saúde" — 3 trilhas
+   (Setor Público / Privado / Indústria & Laboratórios).
+3. **Cards flutuantes (Descubra):** "Descubra como avançamos" — carrossel nativo
+   (ver seção 5.1). É o 2º bloco depois do hero.
+4. **Marcas (marquee):** "Distribuímos as marcas em que o Brasil confia" + faixa de
+   certificações. É o 3º bloco.
+5. **Faixa fixa (manifesto):** imagem estática, conteúdo passa por cima.
+6. **Cobertura + Mapa:** mapa do Brasil (SVG) com as 5 unidades + lista.
+7. **Destaques (notícias):** carrossel que puxa as notícias reais (ver seção 5.2).
+8. **CTA** ("Pronto para distribuir com quem o mercado confia?") **+ Footer**
+   (barra de contato Telefone/E-mail/WhatsApp + card "Nossa sede" + skyline de Encantado).
 
-> Decisões de design já validadas: **manter hero vídeo + slogan**; **scroll normal**
-> (nada de sequestro); **título maior, diagonal, sozinho**; tom **corporativo que vende**.
+> Decisões de design já validadas: **manter hero vídeo + slogan**; **scroll normal**;
+> tom **corporativo que vende**; **sem faixa de KPIs**. **A ordem Setores→Cards→Marcas
+> foi escolhida pelo Leo** (antes era Marcas→Cards→Setores).
 
 ---
 
@@ -131,6 +142,39 @@ Estrutura (scroll NORMAL, com reveal-ao-rolar que não repete na volta):
   (apsen, laboratorio_globo, airela, abl_antibioticos, accord, etc.) para não sumirem no
   chip branco. Se o usuário mandar versões coloridas, substituir.
 - Já removidas (não trabalham mais): **Mucambo, Supermax**.
+
+### 5.1. Cards flutuantes (Descubra) — componente NATIVO
+
+- **Foi reconstruído de forma nativa** (antes era iframe — descartado). Hoje é um
+  motor JS (IIFE) dentro do próprio `index.html` do molde 08: slots que rotacionam,
+  autoplay 6s, tilt 3D no mouse, barra de progresso, dots, play/pause.
+- **Fotos reais** em `prototipo/componentes/cards-flutuantes/img/` — a lista `SLIDES`
+  (img/pos/tag/title) fica no `<script>`. `IMGBASE="../componentes/cards-flutuantes/img/"`.
+  Imagens atuais: `Prancheta-5.png` (presença), `carreiras_03.jpg` (pessoas),
+  `chuttersnap-...unsplash.jpg` (logística), `atuacao-xl.jpg` (atendimento),
+  `Prancheta-7.png` (compromisso). Trocar foto = trocar arquivo/entrada na lista.
+
+### 5.2. Módulo de Notícias (aba completa) — data-driven
+
+Fica em `prototipo/molde-08-autoridade/noticias/`. **Adicionar notícia = adicionar 1
+objeto** — listagem, artigo e o carrossel "Destaques" da home leem tudo da mesma base.
+
+- **`dados.js`** — `window.NOTICIAS = [...]` (mais recente primeiro). Campos por notícia:
+  `id` (slug da URL), `titulo`, `categoria` (campo existe mas **os chips foram removidos** —
+  Leo não gostou), `data` (ISO), `dataLabel`, `resumo`, `imagem`, `legenda`, `corpo` (HTML) e,
+  opcional, `galeria: [{src, legenda}]`. Hoje há **4 notícias reais** (Unimed, Gincana,
+  Latinhas/AME, HBB), importadas do site antigo.
+- **`index.html`** — listagem (destaque + grade), renderizada por JS a partir de `NOTICIAS`.
+- **`artigo.html`** — template do artigo, lê `?id=slug`; renderiza título/data/capa/corpo,
+  **galeria com lightbox** (clicar amplia, teclado ←/→/Esc) e "outras notícias".
+- **`estilo.css`** — estilos compartilhados (header, hero, cards, artigo/prose, galeria,
+  lightbox, footer, responsivo).
+- A **Gincana** tem galeria de **11 fotos** em `../../assets/noticias/gincana/` (+ `cover.jpg`).
+- **Carrossel "Destaques" da home** já está fiado nas 4 notícias reais (mapeia
+  `NOTICIAS.slice(0,4)` → título/resumo/data/imagem/link do artigo).
+- Fotos das notícias em `prototipo/assets/noticias/`.
+- **Regra do Leo p/ o texto:** liberado a ajustar títulos, gramática, formatação e deixar
+  mais corporativo — **sem alterar NENHUMA informação factual**.
 
 ---
 
@@ -175,20 +219,36 @@ Método: uma pasta por site, com print(s) + `nota.txt` explicando **o que agrado
 
 ## 9. Próximos passos / pendências
 
-- [ ] **Novartis:** aguardar o `nota.txt` do usuário e recriar a peça (provável seção "Nossa
-      história"/linha do tempo).
-- [ ] Continuar **peça por peça** conforme o usuário traz referências.
-- [ ] Fotos reais da estrutura/equipe (hoje há placeholders "[foto a definir]" e retângulos
-      coloridos nas especialidades).
+### ✅ Já concluído nesta fase (Molde 08)
+- Cards flutuantes reconstruídos de forma **nativa** com fotos reais.
+- **Módulo de Notícias completo:** aba (listagem + artigo), 4 notícias reais, galeria com
+  lightbox na Gincana, carrossel "Destaques" da home fiado nas notícias reais, chips de
+  categoria removidos.
+- Header com **logo wordmark que troca**; área final/CTA + footer reformulados
+  (uma CTA + barra de contato + card "Nossa sede").
+- **Ordem dos blocos** reordenada para Setores → Cards → Marcas.
+
+### ⏳ Em aberto / próximos
+- [ ] Ofertas feitas (aguardando o Leo confirmar): botão **"Ver todas as notícias"** abaixo
+      do carrossel da home; **legendas por foto** na galeria da Gincana.
+- [ ] **Novartis:** aguardar o `nota.txt` e recriar a peça (provável "Nossa história"/timeline).
+- [ ] Continuar **peça por peça** conforme o Leo traz referências.
 - [ ] Preencher o **depoimento** real do molde 11 (hoje "[Nome do cliente]").
-- [ ] Eventualmente: escolher o molde final, montar páginas internas, aba de notícias.
-- [ ] Ajuste pendente possível: **velocidade do marquee** (32s → 60–75s) se o usuário pedir.
+- [ ] Eventualmente: escolher o molde final e montar as demais páginas internas.
+- [ ] Ajuste possível: **velocidade do marquee** (32s → 60–75s) se o Leo pedir.
+
+> **Contexto:** o Leo estava prestes a **apresentar o site para a chefe dele** — capriche
+> no acabamento visual.
 
 ---
 
 ## 10. Mensagem sugerida para iniciar a nova sessão
 
 > "Estou continuando o projeto do site da Ciamed. Leia o arquivo
-> `CONTEXTO-PROJETO-CIAMED.md` na raiz do repo `oleodias/ciasite` (branch main) para
+> `CONTEXTO-PROJETO-CIAMED.md` na raiz do repo `oleodias/ciasite` (branch `main`) para
 > pegar todo o contexto. Estamos evoluindo o **Molde 08 (Autoridade)** peça por peça a
-> partir de referências. Renderize o mínimo — eu confiro pelo GitHub Pages."
+> partir de referências. Já estão prontos: os **cards flutuantes nativos** e o **módulo de
+> Notícias completo** (aba + carrossel da home). A ordem atual dos blocos é
+> **Setores → Cards flutuantes → Marcas**. Trabalhe em português, renderize o mínimo (eu
+> confiro pelo GitHub Pages) e junte vários ajustes antes de conferir. Commit + push na `main`
+> a cada etapa. Me diga por onde quer que a gente comece."
