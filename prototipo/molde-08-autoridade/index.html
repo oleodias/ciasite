@@ -1358,19 +1358,38 @@
 
       /* DESTAQUES (notícias — remaster "Capa viva") */
       @keyframes destWordIn {
-        from { opacity: 0; transform: translateY(0.55em) rotate(1.5deg); }
-        to { opacity: 1; transform: none; }
+        from {
+          opacity: 0;
+          transform: translateY(0.55em) rotate(1.5deg);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       @keyframes destMetaIn {
-        from { opacity: 0; transform: translateY(14px); }
-        to { opacity: 1; transform: none; }
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
       }
       @keyframes destRingFill {
-        from { stroke-dashoffset: 163; }
-        to { stroke-dashoffset: 0; }
+        from {
+          stroke-dashoffset: 163;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
       }
       @media (prefers-reduced-motion: reduce) {
-        .destaques * { animation: none !important; transition: none !important; }
+        .destaques * {
+          animation: none !important;
+          transition: none !important;
+        }
       }
       .destaques {
         background: #fbfdfd;
@@ -1429,7 +1448,9 @@
         display: inline-block;
         animation: destWordIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
       }
-      .dest-meta2 { animation: destMetaIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both; }
+      .dest-meta2 {
+        animation: destMetaIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both;
+      }
       .dest-excerpt {
         color: var(--gray);
         font-size: 1.04rem;
@@ -1449,7 +1470,10 @@
         transition: 0.25s;
         white-space: nowrap;
       }
-      .dest-cta:hover { background: var(--teal); gap: 16px; }
+      .dest-cta:hover {
+        background: var(--teal);
+        gap: 16px;
+      }
       /* controles */
       .dest-ctrl {
         display: flex;
@@ -1471,7 +1495,10 @@
         display: grid;
         place-items: center;
       }
-      .dest-ctrl .arrow:hover { border-color: var(--teal); color: var(--teal); }
+      .dest-ctrl .arrow:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+      }
       .dest-ctrl .arrow.next {
         position: relative;
         border: none;
@@ -1487,7 +1514,9 @@
         stroke-dasharray: 163;
         animation: destRingFill var(--dest-secs, 7s) linear forwards;
       }
-      .destaques:hover .dest-ctrl .arrow.next .ring { animation-play-state: paused; }
+      .destaques:hover .dest-ctrl .arrow.next .ring {
+        animation-play-state: paused;
+      }
       .dest-count {
         font-family: ui-monospace, "SF Mono", Menlo, monospace;
         font-size: 0.82rem;
@@ -1542,7 +1571,11 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to top, rgba(4, 64, 63, 0.3), transparent 40%);
+        background: linear-gradient(
+          to top,
+          rgba(4, 64, 63, 0.3),
+          transparent 40%
+        );
         pointer-events: none;
         z-index: 3;
       }
@@ -1572,7 +1605,9 @@
         transition: background 0.3s;
         min-width: 0;
       }
-      .dest-q:hover { background: var(--mist); }
+      .dest-q:hover {
+        background: var(--mist);
+      }
       .dest-q::before {
         content: "";
         position: absolute;
@@ -1582,7 +1617,9 @@
         height: 2px;
         background: transparent;
       }
-      .dest-q.on::before { background: var(--teal); }
+      .dest-q.on::before {
+        background: var(--teal);
+      }
       .dest-q .n {
         font-family: ui-monospace, "SF Mono", Menlo, monospace;
         font-size: 0.74rem;
@@ -1602,7 +1639,9 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
-      .dest-q.on .t { color: var(--ink); }
+      .dest-q.on .t {
+        color: var(--ink);
+      }
       .dest-q .d {
         font-size: 0.72rem;
         letter-spacing: 0.12em;
@@ -1611,12 +1650,26 @@
         font-weight: 600;
       }
       @media (max-width: 900px) {
-        .dest-grid { grid-template-columns: 1fr; gap: 44px; }
-        .dest-text { min-height: 0; }
-        .dest-frame { border-radius: 90px 90px 18px 18px !important; }
-        .dest-deco { display: none; }
-        .dest-queue-grid { grid-template-columns: 1fr 1fr; }
-        .dest-q { border-left: none; border-bottom: 1px solid var(--line); }
+        .dest-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .dest-text {
+          min-height: 0;
+        }
+        .dest-frame {
+          border-radius: 90px 90px 18px 18px !important;
+        }
+        .dest-deco {
+          display: none;
+        }
+        .dest-queue-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .dest-q {
+          border-left: none;
+          border-bottom: 1px solid var(--line);
+        }
       }
 
       /* CTA + FOOTER */
@@ -2356,12 +2409,31 @@
               </div>
             </div>
             <div class="dest-ctrl">
-              <button class="arrow" id="destPrev" aria-label="Anterior">←</button>
+              <button class="arrow" id="destPrev" aria-label="Anterior">
+                ←
+              </button>
               <button class="arrow next" id="destNext" aria-label="Próximo">
                 →
                 <svg width="54" height="54" viewBox="0 0 54 54">
-                  <circle cx="27" cy="27" r="26" fill="none" stroke="#e3edeb" stroke-width="1.6"></circle>
-                  <circle class="ring" id="destRing" cx="27" cy="27" r="26" fill="none" stroke="#00b3b2" stroke-width="1.6" stroke-linecap="round"></circle>
+                  <circle
+                    cx="27"
+                    cy="27"
+                    r="26"
+                    fill="none"
+                    stroke="#e3edeb"
+                    stroke-width="1.6"
+                  ></circle>
+                  <circle
+                    class="ring"
+                    id="destRing"
+                    cx="27"
+                    cy="27"
+                    r="26"
+                    fill="none"
+                    stroke="#00b3b2"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  ></circle>
                 </svg>
               </button>
               <span class="dest-count" id="destCount"></span>
@@ -2888,7 +2960,8 @@
       // relativas a pasta noticias/ (../../); na home o caminho correto e ../.
       const DEST_SECS = 7; // autoplay (s)
       const homeImg = (p) => (p || "").replace("../../", "../");
-      const artUrl = (id) => "noticias/artigo.html?id=" + encodeURIComponent(id);
+      const artUrl = (id) =>
+        "noticias/artigo.html?id=" + encodeURIComponent(id);
       const NEWS = (window.NOTICIAS || []).slice(0, 4).map((n) => ({
         img: homeImg(n.imagem),
         date: n.dataLabel,
@@ -2910,7 +2983,10 @@
         destFrame = dget("destFrame"),
         destVisual = dget("destVisual"),
         destQueue = dget("destQueue");
-      document.documentElement.style.setProperty("--dest-secs", DEST_SECS + "s");
+      document.documentElement.style.setProperty(
+        "--dest-secs",
+        DEST_SECS + "s",
+      );
 
       let dIdx = 0,
         dTimer = null;
@@ -2935,7 +3011,9 @@
           const b = document.createElement("button");
           b.className = "dest-q";
           b.innerHTML =
-            '<span class="n">0' + (i + 1) + "</span>" +
+            '<span class="n">0' +
+            (i + 1) +
+            "</span>" +
             '<span class="t"></span>' +
             '<span class="d"></span>';
           b.querySelector(".t").textContent = n.title;
@@ -2954,9 +3032,16 @@
           const px = (e.clientX - r.left) / r.width - 0.5;
           const py = (e.clientY - r.top) / r.height - 0.5;
           destFrame.style.transform =
-            "perspective(1100px) rotateX(" + -py * 4 + "deg) rotateY(" + px * 5 + "deg)";
+            "perspective(1100px) rotateX(" +
+            -py * 4 +
+            "deg) rotateY(" +
+            px * 5 +
+            "deg)";
         });
-        destVisual.addEventListener("mouseleave", () => (destFrame.style.transform = ""));
+        destVisual.addEventListener(
+          "mouseleave",
+          () => (destFrame.style.transform = ""),
+        );
         window.addEventListener("resize", dFitFrame);
         dRender();
         dSchedule();
@@ -3003,7 +3088,9 @@
         dFitFrame();
         // contador + fila + anel de progresso
         destCount.textContent = "0" + (dIdx + 1) + " / 0" + NEWS.length;
-        [...destQueue.children].forEach((b, i) => b.classList.toggle("on", i === dIdx));
+        [...destQueue.children].forEach((b, i) =>
+          b.classList.toggle("on", i === dIdx),
+        );
         destRing.style.animation = "none";
         void destRing.getBoundingClientRect();
         destRing.style.animation = "";
